@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
     private SpriteRenderer sr;
+    private CapsuleCollider2D cc;
     public PlayerInputSet input { get; private set; }
     public StateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = anim.GetComponent<SpriteRenderer>();
-
+        cc = GetComponent<CapsuleCollider2D>();
         input = new PlayerInputSet();
         stateMachine = new StateMachine();
         idleState = new PlayerIdleState(this, stateMachine, "idle");
@@ -85,11 +86,13 @@ public class Player : MonoBehaviour
         {
             sr.flipX = true;
             facingDirection = -1;
+            cc.offset = new Vector2(0.8f, cc.offset.y);
         }
         else if (moveInput.x > 0)
         {
             sr.flipX = false;
             facingDirection = 1;
+            cc.offset = new Vector2(0, cc.offset.y);
         }
     }
     private void OnDrawGizmos()
