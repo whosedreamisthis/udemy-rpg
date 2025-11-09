@@ -19,13 +19,16 @@ public class Player : MonoBehaviour
     [Header("Movement details")]
     public float moveSpeed;
     public float jumpForce = 5;
+    
+    [Range(0,1)]
+    public float inAirMoveMultiplier = 0.7f;
 
     [Header("Collision detection")]
     [SerializeField]
     private float groundCheckDistance;
     [SerializeField]
     private LayerMask whatIsGround;
-    public bool groundDetected;
+    public bool groundDetected { get; private set; }
 
     private void Awake()
     {
@@ -37,6 +40,7 @@ public class Player : MonoBehaviour
         moveState = new PlayerMoveState(this, stateMachine, "move");
         jumpState = new PlayerJumpState(this, stateMachine, "jumpFall");
         fallState = new PlayerFallState(this, stateMachine, "jumpFall");
+        // Time.timeScale = 0.1f;
     }
 
     private void OnEnable()
