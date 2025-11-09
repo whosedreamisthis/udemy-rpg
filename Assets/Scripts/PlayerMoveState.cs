@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundedState
 {
-    SpriteRenderer sr;
+
     public PlayerMoveState(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
     {
-        sr = anim.GetComponent<SpriteRenderer>();
     }
 
 
@@ -17,14 +16,7 @@ public class PlayerMoveState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.idleState);
         }
-        if (player.moveInput.x < 0)
-        {
-            sr.flipX = true;
-        }
-        else if (player.moveInput.x > 0)
-        {
-            sr.flipX = false;
-        }
+        player.Flip();
         player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.linearVelocity.y);
     }
 }

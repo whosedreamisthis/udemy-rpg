@@ -3,8 +3,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Animator anim { get; private set; }
-    public Rigidbody2D rb { get; private set;
-     }
+    public Rigidbody2D rb { get; private set; }
+    private SpriteRenderer sr;
     public PlayerInputSet input { get; private set; }
     public StateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -19,21 +19,23 @@ public class Player : MonoBehaviour
     [Header("Movement details")]
     public float moveSpeed;
     public float jumpForce = 5;
+    private int facingDirection = 1;
     
     [Range(0,1)]
     public float inAirMoveMultiplier = 0.7f;
 
     [Header("Collision detection")]
-    [SerializeField]
-    private float groundCheckDistance;
-    [SerializeField]
-    private LayerMask whatIsGround;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private float wallCheckDistance;
     public bool groundDetected { get; private set; }
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        sr = anim.GetComponent<SpriteRenderer>();
+
         input = new PlayerInputSet();
         stateMachine = new StateMachine();
         idleState = new PlayerIdleState(this, stateMachine, "idle");
@@ -77,8 +79,22 @@ public class Player : MonoBehaviour
         groundDetected = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
     }
 
+    public void Flip()
+    {
+      if (moveInput.x < 0)
+        {
+            sr.flipX = true;
+            facingDirection = -1;
+        }
+        else if (moveInput.x > 0)
+        {
+            sr.flipX = false;
+            facingDirection = 1;
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -groundCheckDistance, 0));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(wallCheckDistance * facingDirection, 0));
     }
 }
