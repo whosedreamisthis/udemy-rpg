@@ -21,16 +21,19 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public float jumpForce = 5;
     private int facingDirection = 1;
+    private bool facingRight = true;
     
     [Range(0,1)]
     public float inAirMoveMultiplier = 0.7f;
 
     [Header("Collision detection")]
     [SerializeField] private float groundCheckDistance;
-    [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float wallCheckDistance;
+
+    [SerializeField] private LayerMask whatIsGround;
     public bool groundDetected { get; private set; }
 
+    public bool wallDetected { get; private set; }
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -73,27 +76,47 @@ public class Player : MonoBehaviour
     public void SetVelocity(float xVelocity, float yVelocity)
     {
         rb.linearVelocity = new Vector2(xVelocity, yVelocity);
+        HandleFlip(xVelocity);
     }
 
     private void HandleCollisionDetection ()
     {
         groundDetected = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+        wallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
     }
 
+    private void HandleFlip(float xVelocity)
+    {
+        // Debug.Log("handleFlip xVelocity "  +xVelocity + " facingRight " + facingRight);
+        if (xVelocity > 0.1f && !facingRight)
+        {
+            // Debug.Log(" if (xVelocity > 0 && !facingRight) flip");
+            Flip();
+        }
+        if (xVelocity < -0.1f && facingRight )
+        {
+            // Debug.Log(" if (xVelocity < 0 && facingRight) flip");
+                Flip();
+        }
+  }
     public void Flip()
     {
-      if (moveInput.x < 0)
-        {
-            sr.flipX = true;
-            facingDirection = -1;
-            cc.offset = new Vector2(0.8f, cc.offset.y);
-        }
-        else if (moveInput.x > 0)
-        {
-            sr.flipX = false;
-            facingDirection = 1;
-            cc.offset = new Vector2(0, cc.offset.y);
-        }
+        transform.Rotate(0, 180, 0);
+        facingRight = !facingRight;
+        facingDirection = -1 * facingDirection;
+        // Debug.Log("facing right "+ facingRight + "xVelocity " + rb.linearVelocity.x);
+        //   if (moveInput.x < 0)
+        //     {
+        //         sr.flipX = true;
+        //         facingDirection = -1;
+        //         cc.offset = new Vector2(0.8f, cc.offset.y);
+        //     }
+        //     else if (moveInput.x > 0)
+        //     {
+        //         sr.flipX = false;
+        //         facingDirection = 1;
+        //         cc.offset = new Vector2(0, cc.offset.y);
+        //     }
     }
     private void OnDrawGizmos()
     {
