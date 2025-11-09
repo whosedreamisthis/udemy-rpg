@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class EntityState
+public abstract class EntityState
 {
     protected StateMachine stateMachine;
+    protected Player player;
     protected string stateName;
 
-    public EntityState(StateMachine stateMachine, string stateName)
+    public EntityState(Player player, StateMachine stateMachine, string stateName)
     {
+        this.player = player;
         this.stateMachine = stateMachine;
         this.stateName = stateName;
     }

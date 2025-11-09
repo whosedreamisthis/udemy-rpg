@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public StateMachine stateMachine;
-    private EntityState idleState;
+    public StateMachine stateMachine { get; private set; }
+    public PlayerIdleState idleState { get; private set; }
+    public PlayerMoveState moveState { get; private set; }
     private void Awake()
     {
         stateMachine = new StateMachine();
-        idleState = new EntityState(stateMachine, "Idle state");
+        idleState = new PlayerIdleState(this, stateMachine, "idle");
+        moveState = new PlayerMoveState(this, stateMachine, "move");
     }
 
     private void Start()
