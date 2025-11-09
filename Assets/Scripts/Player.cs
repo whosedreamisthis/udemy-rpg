@@ -14,7 +14,9 @@ public class Player : MonoBehaviour
     public PlayerJumpState jumpState { get; private set; }
 
     public PlayerFallState fallState { get; private set; }
-    
+    public PlayerWallSlideState wallSlideState { get; private set; }
+
+
     public Vector2 moveInput { get; private set; }
 
     [Header("Movement details")]
@@ -22,9 +24,11 @@ public class Player : MonoBehaviour
     public float jumpForce = 5;
     private int facingDirection = 1;
     private bool facingRight = true;
-    
-    [Range(0,1)]
+
+    [Range(0, 1)]
     public float inAirMoveMultiplier = 0.7f;
+    [Range(0, 1)]
+    public float wallSlideSlowMultiplier = 0.7f;
 
     [Header("Collision detection")]
     [SerializeField] private float groundCheckDistance;
@@ -46,6 +50,7 @@ public class Player : MonoBehaviour
         moveState = new PlayerMoveState(this, stateMachine, "move");
         jumpState = new PlayerJumpState(this, stateMachine, "jumpFall");
         fallState = new PlayerFallState(this, stateMachine, "jumpFall");
+        wallSlideState = new PlayerWallSlideState(this, stateMachine, "wallSlide");
         // Time.timeScale = 0.1f;
     }
 
@@ -88,12 +93,12 @@ public class Player : MonoBehaviour
     private void HandleFlip(float xVelocity)
     {
         // Debug.Log("handleFlip xVelocity "  +xVelocity + " facingRight " + facingRight);
-        if (xVelocity > 0.1f && !facingRight)
+        if (xVelocity > 0 && !facingRight)
         {
             // Debug.Log(" if (xVelocity > 0 && !facingRight) flip");
             Flip();
         }
-        if (xVelocity < -0.1f && facingRight )
+        if (xVelocity < 0 && facingRight )
         {
             // Debug.Log(" if (xVelocity < 0 && facingRight) flip");
                 Flip();
@@ -101,10 +106,11 @@ public class Player : MonoBehaviour
   }
     public void Flip()
     {
+        
         transform.Rotate(0, 180, 0);
         facingRight = !facingRight;
         facingDirection = -1 * facingDirection;
-        // Debug.Log("facing right "+ facingRight + "xVelocity " + rb.linearVelocity.x);
+        Debug.Log("facing right "+ facingRight + "xVelocity " + rb.linearVelocity.x);
         //   if (moveInput.x < 0)
         //     {
         //         sr.flipX = true;

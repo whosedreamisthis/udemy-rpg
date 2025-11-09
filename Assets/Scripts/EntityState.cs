@@ -23,6 +23,7 @@ public abstract class EntityState
 
     public virtual void Enter()
     {
+        Debug.Log("enter state " + animBoolName);
         anim.SetBool(animBoolName, true);
     }
 
@@ -33,6 +34,7 @@ public abstract class EntityState
     
     public virtual void Exit()
     {
+        Debug.Log("exit state " + animBoolName);
         anim.SetBool(animBoolName, false);
     }
 

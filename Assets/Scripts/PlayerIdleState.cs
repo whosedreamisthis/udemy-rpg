@@ -12,6 +12,11 @@ public class PlayerIdleState : PlayerGroundedState
         base.Enter();
 
         player.SetVelocity(0, rb.linearVelocity.y);
+
+        if (player.wallDetected)
+        {   
+            player.Flip();
+        }
     }
     public override void Update()
     {
