@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class PlayerMoveState : EntityState 
+public class PlayerMoveState : EntityState
 {
+    SpriteRenderer sr;
     public PlayerMoveState(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
     {
-
+        sr = anim.GetComponent<SpriteRenderer>();
     }
 
-  public override void Update()
-  {
+
+    public override void Update()
+    {
         base.Update();
 
         if (player.moveInput.x == 0)
@@ -17,12 +19,12 @@ public class PlayerMoveState : EntityState
         }
         if (player.moveInput.x < 0)
         {
-            anim.GetComponent<SpriteRenderer>().flipX = true;
+            sr.flipX = true;
         }
         else if (player.moveInput.x > 0)
         {
-            anim.GetComponent<SpriteRenderer>().flipX = false;
+            sr.flipX = false;
         }
         player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.linearVelocity.y);
-  }
+    }
 }
