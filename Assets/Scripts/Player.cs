@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Animator anim { get; private set; }
+    
     private PlayerInputSet input;
     public StateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -10,6 +12,7 @@ public class Player : MonoBehaviour
     public Vector2 moveInput { get; private set; }
     private void Awake()
     {
+        anim = GetComponentInChildren<Animator>();
         input = new PlayerInputSet();
         stateMachine = new StateMachine();
         idleState = new PlayerIdleState(this, stateMachine, "idle");
