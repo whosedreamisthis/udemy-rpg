@@ -10,7 +10,7 @@ public class PlayerIdleState : EntityState
     public override void Update()
     {
         base.Update();
-        if (Input.GetKey(KeyCode.F))
+        if (player.moveInput.x != 0)
         {
             stateMachine.ChangeState(player.moveState);
         }

@@ -11,10 +11,15 @@ public class StateMachine
     }
 
     public void ChangeState(EntityState nextState)
-  {
+    {
         currentState.Exit();
         currentState = nextState;
         currentState.Enter();
+    }
+  
+  public void UpdateActiveState()
+  {
+        currentState.Update();
   }
 
 }
