@@ -3,16 +3,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Animator anim { get; private set; }
-    
+    public Rigidbody2D rb { get; private set;
+     }
     private PlayerInputSet input;
     public StateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
 
     public Vector2 moveInput { get; private set; }
+
+    [Header("Movement details")]
+    public float moveSpeed;
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         input = new PlayerInputSet();
         stateMachine = new StateMachine();
         idleState = new PlayerIdleState(this, stateMachine, "idle");
@@ -41,4 +46,9 @@ public class Player : MonoBehaviour
     {
         stateMachine.UpdateActiveState();
     }
+
+    public void SetVelocity(float xVelocity, float yVelocity)
+  {
+        rb.linearVelocity = new Vector2(xVelocity, yVelocity);
+  }
 }
