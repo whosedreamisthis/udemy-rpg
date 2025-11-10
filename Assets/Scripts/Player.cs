@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public PlayerFallState fallState { get; private set; }
     public PlayerWallSlideState wallSlideState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
-
+    public PlayerDashState dashState { get; private set; }
 
     public Vector2 moveInput { get; private set; }
 
@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
     public float inAirMoveMultiplier = 0.7f;
     [Range(0, 1)]
     public float wallSlideSlowMultiplier = 0.4f;
+    [Space]
+    public float dashDuration = 0.25f;
+    public float dashSpeed = 20;
 
     [Header("Collision detection")]
     [SerializeField] private float groundCheckDistance;
@@ -54,6 +57,7 @@ public class Player : MonoBehaviour
         fallState = new PlayerFallState(this, stateMachine, "jumpFall");
         wallSlideState = new PlayerWallSlideState(this, stateMachine, "wallSlide");
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "jumpFall");
+        dashState = new PlayerDashState(this, stateMachine, "dash");
 
     }
 
@@ -113,19 +117,8 @@ public class Player : MonoBehaviour
         transform.Rotate(0, 180, 0);
         facingRight = !facingRight;
         facingDirection = -1 * facingDirection;
-        Debug.Log("facing right "+ facingRight + "xVelocity " + rb.linearVelocity.x);
-        //   if (moveInput.x < 0)
-        //     {
-        //         sr.flipX = true;
-        //         facingDirection = -1;
-        //         cc.offset = new Vector2(0.8f, cc.offset.y);
-        //     }
-        //     else if (moveInput.x > 0)
-        //     {
-        //         sr.flipX = false;
-        //         facingDirection = 1;
-        //         cc.offset = new Vector2(0, cc.offset.y);
-        //     }
+        // Debug.Log("facing right "+ facingRight + "xVelocity " + rb.linearVelocity.x);
+        
     }
     private void OnDrawGizmos()
     {

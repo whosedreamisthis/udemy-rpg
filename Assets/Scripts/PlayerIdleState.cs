@@ -14,12 +14,14 @@ public class PlayerIdleState : PlayerGroundedState
         player.SetVelocity(0, rb.linearVelocity.y);
 
         if (player.wallDetected)
-        {   
+        {
             player.Flip();
         }
     }
     public override void Update()
     {
+        player.SetVelocity(0, rb.linearVelocity.y);
+
         base.Update();
         if (player.moveInput.x != 0)
         {
