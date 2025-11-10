@@ -4,19 +4,21 @@ public class PlayerDashState : EntityState
 {
     private float originalGravityScale;
     private int dashDirection;
-    public PlayerDashState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
-    {
-    }
+
+    public PlayerDashState(Player player, StateMachine stateMachine, string animBoolName)
+        : base(player, stateMachine, animBoolName) { }
 
     public override void Enter()
     {
         base.Enter();
-        dashDirection = player.facingDirection;
+        dashDirection =
+            (player.moveInput.x != 0) ? ((int)player.moveInput.x) : player.facingDirection;
+
         stateTimer = player.dashDuration;
         originalGravityScale = rb.gravityScale;
         rb.gravityScale = 0;
-    
-  }
+    }
+
     public override void Update()
     {
         base.Update();
@@ -44,19 +46,19 @@ public class PlayerDashState : EntityState
 
         rb.gravityScale = originalGravityScale;
     }
-    
+
     private void CancelDashIfNeeded()
-  {
-    if (player.wallDetected)
     {
-        if (player.groundDetected)
+        if (player.wallDetected)
         {
-            stateMachine.ChangeState(player.idleState);
-        }
-        else
-        {
-            stateMachine.ChangeState(player.wallSlideState);
+            if (player.groundDetected)
+            {
+                stateMachine.ChangeState(player.idleState);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.wallSlideState);
+            }
         }
     }
-  }
 }

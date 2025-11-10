@@ -3,10 +3,13 @@ using UnityEngine;
 public class PlayerBasicAttackState : EntityState
 {
     private float attackVelocityTimer;
+    private float lastTimeAttacked;
+
     private const int FirstCombgoIndex = 1;
     private int comboIndex = 1;
     private const int ComboLimit = 3;
-    private float lastTimeAttacked;
+    private int attackDirection;
+    private bool comboAttackQueued;
 
     public PlayerBasicAttackState(Player player, StateMachine stateMachine, string animBoolName)
         : base(player, stateMachine, animBoolName) { }
@@ -14,18 +17,28 @@ public class PlayerBasicAttackState : EntityState
     public override void Enter()
     {
         base.Enter();
+        comboAttackQueued = false;
+        ResetComboIndexIfNeeded();
+
+        attackDirection =
+            (player.moveInput.x != 0) ? ((int)player.moveInput.x) : player.facingDirection;
+
         anim.SetInteger("basicAttackIndex", comboIndex);
         ApplyAttackVelocity();
-        ResetComboIndexIfNeeded();
     }
 
     public override void Update()
     {
         base.Update();
         HandleAttackVelocity();
+
+        if (input.Player.Attack.WasPressedThisFrame())
+        {
+            QueueNextAttack();
+        }
         if (triggerCalled)
         {
-            stateMachine.ChangeState(player.idleState);
+            HandleStateExit();
         }
     }
 
@@ -39,6 +52,27 @@ public class PlayerBasicAttackState : EntityState
         }
 
         lastTimeAttacked = Time.time;
+    }
+
+    private void HandleStateExit()
+    {
+        if (comboAttackQueued)
+        {
+            anim.SetBool(animBoolName, false);
+            player.EnterAttackStateWithDelay();
+        }
+        else
+        {
+            stateMachine.ChangeState(player.idleState);
+        }
+    }
+
+    private void QueueNextAttack()
+    {
+        if (comboIndex < ComboLimit)
+        {
+            comboAttackQueued = true;
+        }
     }
 
     void ResetComboIndexIfNeeded()
@@ -64,6 +98,6 @@ public class PlayerBasicAttackState : EntityState
         attackVelocityTimer = player.attcakVelocityDuration;
         int attackVelocityIndex = comboIndex - FirstCombgoIndex;
         Vector2 attackVelocity = player.attackVelocity[attackVelocityIndex];
-        player.SetVelocity(attackVelocity.x * player.facingDirection, attackVelocity.y);
+        player.SetVelocity(attackVelocity.x * attackDirection, attackVelocity.y);
     }
 }
