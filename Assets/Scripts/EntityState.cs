@@ -12,6 +12,8 @@ public abstract class EntityState
 
     protected float stateTimer;
 
+    protected bool triggerCalled;
+
     public EntityState(Player player, StateMachine stateMachine, string animBoolName)
     {
         this.player = player;
@@ -25,6 +27,7 @@ public abstract class EntityState
 
     public virtual void Enter()
     {
+        triggerCalled = false;
         Debug.Log("enter state " + animBoolName);
         anim.SetBool(animBoolName, true);
     }
@@ -45,6 +48,10 @@ public abstract class EntityState
         anim.SetBool(animBoolName, false);
     }
 
+    public void CallAnimationTrigger ()
+    {
+        triggerCalled = true;
+    }
     private bool CanDash()
     {
         if (player.wallDetected)
@@ -56,8 +63,8 @@ public abstract class EntityState
         {
             return false;
         }
-        
+
         return true;
-  }
+    }
 
 }
