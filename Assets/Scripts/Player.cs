@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     public Vector2 moveInput { get; private set; }
 
     [Header("Attack details")]
-    public Vector2 attackVelocity;
+    public Vector2[] attackVelocity;
+    public float comboResetTime = 1f;
     public float attcakVelocityDuration = 0.1f;
 
     [Header("Movement details")]
@@ -35,20 +36,27 @@ public class Player : MonoBehaviour
 
     [Range(0, 1)]
     public float inAirMoveMultiplier = 0.7f;
+
     [Range(0, 1)]
     public float wallSlideSlowMultiplier = 0.4f;
+
     [Space]
     public float dashDuration = 0.25f;
     public float dashSpeed = 20;
 
     [Header("Collision detection")]
-    [SerializeField] private float groundCheckDistance;
-    [SerializeField] private float wallCheckDistance;
+    [SerializeField]
+    private float groundCheckDistance;
 
-    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField]
+    private float wallCheckDistance;
+
+    [SerializeField]
+    private LayerMask whatIsGround;
     public bool groundDetected { get; private set; }
 
     public bool wallDetected { get; private set; }
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -65,7 +73,6 @@ public class Player : MonoBehaviour
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "jumpFall");
         dashState = new PlayerDashState(this, stateMachine, "dash");
         basicAttackState = new PlayerBasicAttackState(this, stateMachine, "basicAttack");
-
     }
 
     private void OnEnable()
@@ -76,12 +83,13 @@ public class Player : MonoBehaviour
         input.Player.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
         input.Player.Movement.canceled += context => moveInput = Vector2.zero;
     }
-  private void OnDisable()
-  {
-        input.Disable();
-  }
 
-  private void Start()
+    private void OnDisable()
+    {
+        input.Disable();
+    }
+
+    private void Start()
     {
         stateMachine.Initialize(idleState);
     }
@@ -103,10 +111,20 @@ public class Player : MonoBehaviour
         HandleFlip(xVelocity);
     }
 
-    private void HandleCollisionDetection ()
+    private void HandleCollisionDetection()
     {
-        groundDetected = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
-        wallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
+        groundDetected = Physics2D.Raycast(
+            transform.position,
+            Vector2.down,
+            groundCheckDistance,
+            whatIsGround
+        );
+        wallDetected = Physics2D.Raycast(
+            transform.position,
+            Vector2.right * facingDirection,
+            wallCheckDistance,
+            whatIsGround
+        );
     }
 
     private void HandleFlip(float xVelocity)
@@ -117,24 +135,30 @@ public class Player : MonoBehaviour
             // Debug.Log(" if (xVelocity > 0 && !facingRight) flip");
             Flip();
         }
-        if (xVelocity < 0 && facingRight )
+        if (xVelocity < 0 && facingRight)
         {
             // Debug.Log(" if (xVelocity < 0 && facingRight) flip");
-                Flip();
+            Flip();
         }
-  }
+    }
+
     public void Flip()
     {
-        
         transform.Rotate(0, 180, 0);
         facingRight = !facingRight;
         facingDirection = -1 * facingDirection;
         // Debug.Log("facing right "+ facingRight + "xVelocity " + rb.linearVelocity.x);
-        
     }
+
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -groundCheckDistance, 0));
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(wallCheckDistance * facingDirection, 0));
+        Gizmos.DrawLine(
+            transform.position,
+            transform.position + new Vector3(0, -groundCheckDistance, 0)
+        );
+        Gizmos.DrawLine(
+            transform.position,
+            transform.position + new Vector3(wallCheckDistance * facingDirection, 0)
+        );
     }
 }
