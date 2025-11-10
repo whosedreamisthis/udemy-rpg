@@ -54,6 +54,12 @@ public class Player : MonoBehaviour
     private float wallCheckDistance;
 
     [SerializeField]
+    private Transform primaryWallCheck;
+
+    [SerializeField]
+    private Transform secondaryWallCheck;
+
+    [SerializeField]
     private LayerMask whatIsGround;
     public bool groundDetected { get; private set; }
 
@@ -136,12 +142,19 @@ public class Player : MonoBehaviour
             groundCheckDistance,
             whatIsGround
         );
-        wallDetected = Physics2D.Raycast(
-            transform.position,
-            Vector2.right * facingDirection,
-            wallCheckDistance,
-            whatIsGround
-        );
+        wallDetected =
+            Physics2D.Raycast(
+                primaryWallCheck.position,
+                Vector2.right * facingDirection,
+                wallCheckDistance,
+                whatIsGround
+            )
+            && Physics2D.Raycast(
+                secondaryWallCheck.position,
+                Vector2.right * facingDirection,
+                wallCheckDistance,
+                whatIsGround
+            );
     }
 
     private void HandleFlip(float xVelocity)
@@ -174,8 +187,12 @@ public class Player : MonoBehaviour
             transform.position + new Vector3(0, -groundCheckDistance, 0)
         );
         Gizmos.DrawLine(
-            transform.position,
-            transform.position + new Vector3(wallCheckDistance * facingDirection, 0)
+            primaryWallCheck.position,
+            primaryWallCheck.position + new Vector3(wallCheckDistance * facingDirection, 0)
+        );
+        Gizmos.DrawLine(
+            secondaryWallCheck.position,
+            secondaryWallCheck.position + new Vector3(wallCheckDistance * facingDirection, 0)
         );
     }
 }
