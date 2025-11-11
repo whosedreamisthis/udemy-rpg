@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class StateMachine
+public class StateMachine 
 {
     public EntityState currentState { get; private set; }
+
 
     public void Initialize(EntityState startState)
     {
@@ -10,16 +11,15 @@ public class StateMachine
         currentState.Enter();
     }
 
-    public void ChangeState(EntityState nextState)
+    public void ChangeState(EntityState newState)
     {
         currentState.Exit();
-        currentState = nextState;
+        currentState = newState;
         currentState.Enter();
     }
-  
-  public void UpdateActiveState()
-  {
-        currentState.Update();
-  }
 
+    public void UpdateActiveState()
+    {
+        currentState.Update();        
+    }
 }
