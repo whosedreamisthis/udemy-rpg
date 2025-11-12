@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248cc1524d04a78449f258ced5e2b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  damage: 10
+  damage: 25
   targetCheck: {fileID: 1101165749}
   targetCheckRadius: 1
   whatIsTarget:
