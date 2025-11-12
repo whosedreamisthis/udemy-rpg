@@ -8,7 +8,6 @@ public class EnemyHealth : EntityHealth
     {
         if (damageDealer.GetComponent<Player>() != null)
         {
-            Debug.Log("Enemy took damage from Player, trying to enter battle state.");
             enemy.TryEnterBattleState(damageDealer);
         }
         base.TakeDamage(damage, damageDealer);
