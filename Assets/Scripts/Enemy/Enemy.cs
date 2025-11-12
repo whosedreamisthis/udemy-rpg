@@ -6,8 +6,9 @@ public class Enemy : Entity
     public EnemyMoveState moveState;
     public EnemyAttackState attackState;
     public EnemyBattleState battleState;
-
     public EnemyDeadState deadState;
+    public Enemy_StunnedState stunnedState;
+
     public float battleTimeDuration = 5f;
     public float minRetreatDistance = 1;
     public Vector2 retreatVelocity;
@@ -26,6 +27,14 @@ public class Enemy : Entity
     [Range(0, 2)]
     public float moveAnimSpeedMultiplier = 1f;
 
+    [Header("Stunned State Details")]
+    [SerializeField]
+    public float stunnedDuration = 1f;
+    public Vector2 stunnedVelocity = new Vector2(7, 7);
+
+    [SerializeField]
+    protected bool canBeStunned;
+
     [Header("Player detection")]
     [SerializeField]
     private LayerMask whatIsPlayer;
@@ -36,6 +45,8 @@ public class Enemy : Entity
     [SerializeField]
     private float playerCheckDistance = 10;
     public Transform player { get; private set; }
+
+    public void EnableCounterWindow(bool enable) => canBeStunned = enable;
 
     public override void EntityDeath()
     {

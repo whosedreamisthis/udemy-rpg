@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkeletonEnemy : Enemy
+public class SkeletonEnemy : Enemy, ICounterable
 {
     public SkeletonEnemy() { }
 
@@ -19,5 +19,25 @@ public class SkeletonEnemy : Enemy
         attackState = new EnemyAttackState(this, stateMachine, "attack");
         battleState = new EnemyBattleState(this, stateMachine, "battle");
         deadState = new EnemyDeadState(this, stateMachine, "idle");
+        stunnedState = new Enemy_StunnedState(this, stateMachine, "stunned");
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            HandleCounter();
+        }
+    }
+
+    public void HandleCounter()
+    {
+        if (canBeStunned == false)
+        {
+            return;
+        }
+        stateMachine.ChangeState(stunnedState);
     }
 }
