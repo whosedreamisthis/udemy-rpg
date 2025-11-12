@@ -6,6 +6,8 @@ public class Enemy : Entity
     public EnemyMoveState moveState;
     public EnemyAttackState attackState;
     public EnemyBattleState battleState;
+
+    public EnemyDeadState deadState;
     public float battleTimeDuration = 5f;
     public float minRetreatDistance = 1;
     public Vector2 retreatVelocity;
@@ -34,6 +36,11 @@ public class Enemy : Entity
     [SerializeField]
     private float playerCheckDistance = 10;
     public Transform player { get; private set; }
+
+    public override void EntityDeath()
+    {
+        stateMachine.ChangeState(deadState);
+    }
 
     public void TryEnterBattleState(Transform player)
     {

@@ -56,6 +56,8 @@ public class Entity : MonoBehaviour
         stateMachine.currentState.AnimationTrigger();
     }
 
+    public virtual void EntityDeath() { }
+
     public void RecieveKnockback(Vector2 knockback, float duration)
     {
         if (knockbackCoroutine != null)

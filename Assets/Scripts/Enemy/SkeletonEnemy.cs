@@ -18,5 +18,6 @@ public class SkeletonEnemy : Enemy
         moveState = new EnemyMoveState(this, stateMachine, "move");
         attackState = new EnemyAttackState(this, stateMachine, "attack");
         battleState = new EnemyBattleState(this, stateMachine, "battle");
+        deadState = new EnemyDeadState(this, stateMachine, "idle");
     }
 }
