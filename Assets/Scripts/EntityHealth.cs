@@ -8,7 +8,7 @@ public class EntityHealth : MonoBehaviour
     [SerializeField]
     protected bool isDead;
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, Transform damageDealer)
     {
         if (isDead)
             return;

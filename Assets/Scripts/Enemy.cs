@@ -33,6 +33,28 @@ public class Enemy : Entity
 
     [SerializeField]
     private float playerCheckDistance = 10;
+    public Transform player { get; private set; }
+
+    public void TryEnterBattleState(Transform player)
+    {
+        if (stateMachine.currentState == battleState || stateMachine.currentState == attackState)
+        {
+            return;
+        }
+
+        this.player = player;
+        stateMachine.ChangeState(battleState);
+    }
+
+    public Transform GetPlayerTransform()
+    {
+        if (player == null)
+        {
+            player = PlayerDetection().transform;
+        }
+
+        return player;
+    }
 
     protected override void Update()
     {
