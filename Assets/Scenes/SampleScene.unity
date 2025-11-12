@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 198459152}
   - component: {fileID: 198459153}
   - component: {fileID: 198459154}
+  - component: {fileID: 198459155}
   m_Layer: 8
   m_Name: EnemySkeleton
   m_TagString: Untagged
@@ -387,12 +388,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248cc1524d04a78449f258ced5e2b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  targetColliders: []
   targetCheck: {fileID: 1101165749}
   targetCheckRadius: 1
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &198459155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198459149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde060e064f7fa14ea079c874dc54cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
 --- !u!1 &271775033
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +501,7 @@ GameObject:
   - component: {fileID: 274070545}
   - component: {fileID: 274070546}
   - component: {fileID: 274070547}
+  - component: {fileID: 274070548}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -625,12 +638,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248cc1524d04a78449f258ced5e2b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  targetColliders: []
   targetCheck: {fileID: 2051452959}
   targetCheckRadius: 1
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &274070548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274070542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde060e064f7fa14ea079c874dc54cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
 --- !u!1 &344415102
 GameObject:
   m_ObjectHideFlags: 0
