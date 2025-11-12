@@ -22,6 +22,9 @@ public class Entity : MonoBehaviour
     private LayerMask whatIsGround;
 
     [SerializeField]
+    private Transform groundCheck;
+
+    [SerializeField]
     private Transform primaryWallCheck;
 
     [SerializeField]
@@ -74,31 +77,44 @@ public class Entity : MonoBehaviour
     private void HandleCollisionDetection()
     {
         groundDetected = Physics2D.Raycast(
-            transform.position,
+            groundCheck.position,
             Vector2.down,
             groundCheckDistance,
             whatIsGround
         );
-        wallDetected =
-            Physics2D.Raycast(
+
+        if (secondaryWallCheck != null)
+        {
+            wallDetected =
+                Physics2D.Raycast(
+                    primaryWallCheck.position,
+                    Vector2.right * facingDir,
+                    wallCheckDistance,
+                    whatIsGround
+                )
+                && Physics2D.Raycast(
+                    secondaryWallCheck.position,
+                    Vector2.right * facingDir,
+                    wallCheckDistance,
+                    whatIsGround
+                );
+        }
+        else
+        {
+            wallDetected = Physics2D.Raycast(
                 primaryWallCheck.position,
                 Vector2.right * facingDir,
                 wallCheckDistance,
                 whatIsGround
-            )
-            && Physics2D.Raycast(
-                secondaryWallCheck.position,
-                Vector2.right * facingDir,
-                wallCheckDistance,
-                whatIsGround
             );
+        }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(
-            transform.position,
-            transform.position + new Vector3(0, -groundCheckDistance)
+            groundCheck.position,
+            groundCheck.position + new Vector3(0, -groundCheckDistance)
         );
         Gizmos.DrawLine(
             primaryWallCheck.position,
