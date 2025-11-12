@@ -407,8 +407,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6acd64c6cc3079940a926ab9b0e5f594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  currentHp: 0
   maxHp: 100
   isDead: 0
+  knockbackForce: {x: 5, y: 5}
+  heavyKnockbackForce: {x: 7, y: 7}
+  knockbackDuration: 0.2
+  heavyKnockbackDuration: 0.5
+  heavyDamageThreshold: 0.3
 --- !u!114 &198459156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,8 +681,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde060e064f7fa14ea079c874dc54cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
+  currentHp: 0
   maxHp: 100
   isDead: 0
+  knockbackForce: {x: 5, y: 5}
+  heavyKnockbackForce: {x: 7, y: 7}
+  knockbackDuration: 0.2
+  heavyKnockbackDuration: 0.5
+  heavyDamageThreshold: 0.3
 --- !u!114 &274070549
 MonoBehaviour:
   m_ObjectHideFlags: 0
