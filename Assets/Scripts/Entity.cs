@@ -120,9 +120,12 @@ public class Entity : MonoBehaviour
             primaryWallCheck.position,
             primaryWallCheck.position + new Vector3(wallCheckDistance * facingDir, 0)
         );
-        Gizmos.DrawLine(
-            secondaryWallCheck.position,
-            secondaryWallCheck.position + new Vector3(wallCheckDistance * facingDir, 0)
-        );
+        if (secondaryWallCheck != null)
+        {
+            Gizmos.DrawLine(
+                secondaryWallCheck.position,
+                secondaryWallCheck.position + new Vector3(wallCheckDistance * facingDir, 0)
+            );
+        }
     }
 }

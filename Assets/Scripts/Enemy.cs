@@ -4,6 +4,7 @@ public class Enemy : Entity
 {
     public EnemyIdleState idleState;
     public EnemyMoveState moveState;
+    public EnemyAttackState attackState;
 
     [Header("Movement Details")]
     public float idleTime = 2f;
