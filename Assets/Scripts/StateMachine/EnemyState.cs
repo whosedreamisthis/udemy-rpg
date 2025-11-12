@@ -20,6 +20,9 @@ public class EnemyState : EntityState
         {
             stateMachine.ChangeState(enemy.attackState);
         }
+
+        float battleAnimSpeedMultiplier = enemy.battleMoveSpeed / enemy.moveSpeed;
+        anim.SetFloat("battleAnimSpeedMultiplier", battleAnimSpeedMultiplier);
         anim.SetFloat("moveAnimSpeedMultiplier", enemy.moveAnimSpeedMultiplier);
         anim.SetFloat("xVelocity", rb.linearVelocity.x);
     }
