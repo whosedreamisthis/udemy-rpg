@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_BasicAttackState : EntityState
+public class Player_BasicAttackState : PlayerState
 {
     private float attackVelocityTimer;
     private float lastTimeAttacked;
@@ -11,8 +11,8 @@ public class Player_BasicAttackState : EntityState
     private int comboLimit = 3;
     private const int FirstComboIndex = 1; // We start combo index with number 1, this parametr is used in the Animator.
 
-
-    public Player_BasicAttackState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    public Player_BasicAttackState(Player player, StateMachine stateMachine, string animBoolName)
+        : base(player, stateMachine, animBoolName)
     {
         if (comboLimit != player.attackVelocity.Length)
         {
@@ -33,7 +33,6 @@ public class Player_BasicAttackState : EntityState
         anim.SetInteger("baiscAttackIndex", comboIndex);
         ApplyAttackVelocity();
     }
-
 
     public override void Update()
     {
@@ -77,7 +76,7 @@ public class Player_BasicAttackState : EntityState
     {
         attackVelocityTimer -= Time.deltaTime;
 
-        if(attackVelocityTimer < 0)
+        if (attackVelocityTimer < 0)
             player.SetVelocity(0, rb.linearVelocity.y);
     }
 
@@ -88,7 +87,6 @@ public class Player_BasicAttackState : EntityState
         attackVelocityTimer = player.attackVelocityDuration;
         player.SetVelocity(attackVelocity.x * attackDir, attackVelocity.y);
     }
-
 
     private void ResetComboIndexIfNeeded()
     {

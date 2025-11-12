@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class Player_DashState : EntityState
+public class Player_DashState : PlayerState
 {
     private float originalGravityScale;
     private int dashDir;
 
-    public Player_DashState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
-    {
-    }
+    public Player_DashState(Player player, StateMachine stateMachine, string animBoolName)
+        : base(player, stateMachine, animBoolName) { }
 
     public override void Enter()
     {
@@ -20,13 +19,11 @@ public class Player_DashState : EntityState
         rb.gravityScale = 0;
     }
 
-
     public override void Update()
     {
         base.Update();
         CancelDashIfNeeded();
         player.SetVelocity(player.dashSpeed * dashDir, 0);
-
 
         if (stateTimer < 0)
         {
