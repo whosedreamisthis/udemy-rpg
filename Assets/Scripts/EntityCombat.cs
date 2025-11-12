@@ -18,8 +18,8 @@ public class EntityCombat : MonoBehaviour
     {
         foreach (Collider2D target in GetDetectedColliders())
         {
-            EntityHealth targetHealth = target.GetComponent<EntityHealth>();
-            targetHealth?.TakeDamage(damage, transform);
+            IDamagable damagable = target.GetComponent<IDamagable>();
+            damagable.TakeDamage(damage, transform);
         }
     }
 
