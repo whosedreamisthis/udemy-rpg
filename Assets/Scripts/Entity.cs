@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
     private float wallCheckDistance;
 
     [SerializeField]
-    private LayerMask whatIsGround;
+    protected LayerMask whatIsGround;
 
     [SerializeField]
     private Transform groundCheck;
@@ -110,7 +110,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(
             groundCheck.position,
