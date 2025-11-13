@@ -1,9 +1,10 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class EntityCombat : MonoBehaviour
 {
     private EntityVFX vfx;
-    public float damage = 10f;
+    private EntityStats stats;
 
     [Header("Target detection")]
     [SerializeField]
@@ -17,10 +18,8 @@ public class EntityCombat : MonoBehaviour
 
     public void Awake()
     {
-        if (vfx == null)
-        {
-            vfx = GetComponent<EntityVFX>();
-        }
+        vfx = GetComponent<EntityVFX>();
+        stats = GetComponent<EntityStats>();
     }
 
     public void PerformAttack()
@@ -31,7 +30,7 @@ public class EntityCombat : MonoBehaviour
 
             if (damagable == null)
                 continue;
-            bool targetGotHit = damagable.TakeDamage(damage, transform);
+            bool targetGotHit = damagable.TakeDamage(stats.GetPhysicalDamage(), transform);
 
             if (targetGotHit)
                 vfx.CreateHitVFX(target.transform);

@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class StatsMajorGroup
 {
-    public Stat strenth;
+    public Stat strength;
     public Stat agility;
 
     public Stat intelligence;
