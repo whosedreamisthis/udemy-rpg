@@ -42,10 +42,17 @@ public class EntityHealth : MonoBehaviour, IDamagable
         UpdateHealthBar();
     }
 
-    public virtual void TakeDamage(float damage, Transform damageDealer)
+    private bool AttackEvaded() => Random.Range(0f, 100f) < stats.GetEvasion();
+
+    public virtual bool TakeDamage(float damage, Transform damageDealer)
     {
         if (isDead)
-            return;
+            return false;
+
+        if (AttackEvaded())
+        {
+            return false;
+        }
 
         entityVFX?.PlayOnDamageVFX();
         Vector2 knockback = calculateKnockback(damage, damageDealer);
@@ -53,6 +60,8 @@ public class EntityHealth : MonoBehaviour, IDamagable
         entity.RecieveKnockback(knockback, duration);
 
         ReduceHp(damage);
+
+        return true;
     }
 
     protected void ReduceHp(float damage)
