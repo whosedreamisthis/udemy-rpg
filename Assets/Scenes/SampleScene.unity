@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 198459154}
   - component: {fileID: 198459155}
   - component: {fileID: 198459156}
+  - component: {fileID: 198459157}
   m_Layer: 8
   m_Name: EnemySkeleton
   m_TagString: Untagged
@@ -655,7 +656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   currentHp: 0
-  maxHp: 100
   isDead: 0
   knockbackForce: {x: 5, y: 5}
   heavyKnockbackForce: {x: 7, y: 7}
@@ -679,6 +679,53 @@ MonoBehaviour:
   hitVFXColor: {r: 0.5283019, g: 0.5208259, b: 0.5208259, a: 1}
   hitVFX: {fileID: 1553750464816024984, guid: 8ad353b3837b5c344970b5776a172efe, type: 3}
   attackAlert: {fileID: 2057589849}
+--- !u!114 &198459157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198459149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f5bd835161fa04ba504520420fc8f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityStats
+  maxHealth:
+    baseValue: 100
+  major:
+    strenth:
+      baseValue: 0
+    agility:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    vitality:
+      baseValue: 0
+  defense:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 0
+    fireRes:
+      baseValue: 0
+    iceRes:
+      baseValue: 0
+    lightningRes:
+      baseValue: 0
+  offense:
+    damage:
+      baseValue: 10
+    critPower:
+      baseValue: 0
+    critChance:
+      baseValue: 0
+    fireDamage:
+      baseValue: 0
+    iceDamage:
+      baseValue: 0
+    lightningDamage:
+      baseValue: 0
 --- !u!1 &271775033
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +824,7 @@ GameObject:
   - component: {fileID: 274070548}
   - component: {fileID: 274070549}
   - component: {fileID: 274070550}
+  - component: {fileID: 274070551}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -915,7 +963,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
   currentHp: 0
-  maxHp: 100
   isDead: 0
   knockbackForce: {x: 5, y: 5}
   heavyKnockbackForce: {x: 7, y: 7}
@@ -957,6 +1004,53 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   counterRecovery: 0.1
+--- !u!114 &274070551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274070542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f5bd835161fa04ba504520420fc8f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityStats
+  maxHealth:
+    baseValue: 100
+  major:
+    strenth:
+      baseValue: 0
+    agility:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    vitality:
+      baseValue: 7
+  defense:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 0
+    fireRes:
+      baseValue: 0
+    iceRes:
+      baseValue: 0
+    lightningRes:
+      baseValue: 0
+  offense:
+    damage:
+      baseValue: 10
+    critPower:
+      baseValue: 0
+    critChance:
+      baseValue: 0
+    fireDamage:
+      baseValue: 0
+    iceDamage:
+      baseValue: 0
+    lightningDamage:
+      baseValue: 0
 --- !u!1 &302591373
 GameObject:
   m_ObjectHideFlags: 0
