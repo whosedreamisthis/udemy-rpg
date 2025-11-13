@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248cc1524d04a78449f258ced5e2b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  damage: 25
+  damage: 10
   targetCheck: {fileID: 1101165749}
   targetCheckRadius: 1
   whatIsTarget:
@@ -529,9 +529,9 @@ GameObject:
   - component: {fileID: 274070543}
   - component: {fileID: 274070545}
   - component: {fileID: 274070546}
-  - component: {fileID: 274070547}
   - component: {fileID: 274070548}
   - component: {fileID: 274070549}
+  - component: {fileID: 274070550}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -656,24 +656,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.4777509, y: -0.34319735}
   m_Size: {x: 0.8792002, y: 1.9736052}
   m_Direction: 0
---- !u!114 &274070547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274070542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248cc1524d04a78449f258ced5e2b011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  damage: 25
-  targetCheck: {fileID: 2051452959}
-  targetCheckRadius: 1
-  whatIsTarget:
-    serializedVersion: 2
-    m_Bits: 768
 --- !u!114 &274070548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +690,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EntityVFX
   onDamageMaterial: {fileID: 2100000, guid: 111428bfaa47f0b469b504766edb457a, type: 2}
   onDamageVFXDuration: 0.15
+--- !u!114 &274070550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274070542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8c97fea34f4a34a889bd32916b6720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
+  damage: 10
+  targetCheck: {fileID: 2051452959}
+  targetCheckRadius: 1
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 256
+  counterRecovery: 0.1
 --- !u!1 &302591373
 GameObject:
   m_ObjectHideFlags: 0
