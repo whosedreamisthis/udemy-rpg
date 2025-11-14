@@ -8,7 +8,7 @@ public class EntityStats : MonoBehaviour
     public StatsDefenseGroup defense;
     public StatsOffenseGroup offense;
 
-    public float GetPhysicalDamage()
+    public float GetPhysicalDamage(out bool isCrit)
     {
         float baseDamage = offense.damage.GetValue();
         float bonusDamage = major.strength.GetValue() * 2;
@@ -21,7 +21,7 @@ public class EntityStats : MonoBehaviour
         float baseCritPower = offense.critPower.GetValue();
         float bonusCritPower = major.strength.GetValue() * 0.5f;
         float critPower = (baseCritPower + bonusCritPower) / 100;
-        bool isCrit = UnityEngine.Random.Range(0f, 100f) <= critChance;
+        isCrit = UnityEngine.Random.Range(0f, 100f) <= critChance;
         float finalDamage = isCrit ? totalBaseDamage * critPower : totalBaseDamage;
         return finalDamage;
     }

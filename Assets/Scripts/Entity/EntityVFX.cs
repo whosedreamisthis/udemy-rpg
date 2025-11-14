@@ -5,6 +5,7 @@ using UnityEngine;
 public class EntityVFX : MonoBehaviour
 {
     private SpriteRenderer sr;
+    private Entity entity;
 
     [Header("On Damage VFX")]
     [SerializeField]
@@ -22,18 +23,28 @@ public class EntityVFX : MonoBehaviour
     [SerializeField]
     private GameObject hitVFX;
 
+    [SerializeField]
+    private GameObject critHitVFX;
+
     private void Awake()
     {
+        entity = GetComponent<Entity>();
         sr = GetComponentInChildren<SpriteRenderer>();
         originalMaterial = sr.material;
     }
 
-    public void CreateHitVFX(Transform target)
+    public void CreateHitVFX(Transform target, bool isCrit)
     {
-        if (hitVFX != null)
-        {
-            GameObject vfx = Instantiate(hitVFX, target.position, Quaternion.identity);
+        GameObject vfxToUse = isCrit ? critHitVFX : hitVFX;
+        GameObject vfx = Instantiate(vfxToUse, target.position, Quaternion.identity);
+        if (!isCrit)
             vfx.GetComponentInChildren<SpriteRenderer>().color = hitVFXColor;
+
+        if (entity.facingDir == -1 && isCrit)
+        {
+            Vector3 scale = vfx.transform.localScale;
+            scale.x *= -1; // Changes (1, 1, 1) to (-1, 1, 1)
+            vfx.transform.localScale = scale;
         }
     }
 

@@ -637,7 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248cc1524d04a78449f258ced5e2b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  damage: 10
   targetCheck: {fileID: 1101165749}
   targetCheckRadius: 1
   whatIsTarget:
@@ -678,6 +677,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.2
   hitVFXColor: {r: 0.5283019, g: 0.5208259, b: 0.5208259, a: 1}
   hitVFX: {fileID: 1553750464816024984, guid: 8ad353b3837b5c344970b5776a172efe, type: 3}
+  critHitVFX: {fileID: 0}
   attackAlert: {fileID: 2057589849}
 --- !u!114 &198459157
 MonoBehaviour:
@@ -692,9 +692,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   maxHealth:
-    baseValue: 100
+    baseValue: 10000
   major:
-    strenth:
+    strength:
       baseValue: 0
     agility:
       baseValue: 0
@@ -985,6 +985,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.15
   hitVFXColor: {r: 0.9623556, g: 0.990566, b: 0.051397298, a: 1}
   hitVFX: {fileID: 1553750464816024984, guid: 8ad353b3837b5c344970b5776a172efe, type: 3}
+  critHitVFX: {fileID: 4055276110649176254, guid: 20ab226bc39c1264f9e6370a6a4d1eae, type: 3}
 --- !u!114 &274070550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -997,7 +998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8c97fea34f4a34a889bd32916b6720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
-  damage: 10
   targetCheck: {fileID: 2051452959}
   targetCheckRadius: 1
   whatIsTarget:
@@ -1017,9 +1017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   maxHealth:
-    baseValue: 100
+    baseValue: 10000
   major:
-    strenth:
+    strength:
       baseValue: 0
     agility:
       baseValue: 0
@@ -1042,9 +1042,9 @@ MonoBehaviour:
     damage:
       baseValue: 10
     critPower:
-      baseValue: 0
+      baseValue: 250
     critChance:
-      baseValue: 0
+      baseValue: 100
     fireDamage:
       baseValue: 0
     iceDamage:
@@ -1189,6 +1189,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.2
   hitVFXColor: {r: 1, g: 1, b: 1, a: 1}
   hitVFX: {fileID: 0}
+  critHitVFX: {fileID: 0}
 --- !u!1 &344415102
 GameObject:
   m_ObjectHideFlags: 0

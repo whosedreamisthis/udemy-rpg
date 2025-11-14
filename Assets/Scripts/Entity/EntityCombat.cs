@@ -30,10 +30,14 @@ public class EntityCombat : MonoBehaviour
 
             if (damagable == null)
                 continue;
-            bool targetGotHit = damagable.TakeDamage(stats.GetPhysicalDamage(), transform);
+            bool isCrit;
+            bool targetGotHit = damagable.TakeDamage(
+                stats.GetPhysicalDamage(out isCrit),
+                transform
+            );
 
             if (targetGotHit)
-                vfx.CreateHitVFX(target.transform);
+                vfx.CreateHitVFX(target.transform, isCrit);
         }
     }
 
