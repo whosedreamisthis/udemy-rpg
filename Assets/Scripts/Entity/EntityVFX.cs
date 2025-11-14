@@ -26,11 +26,58 @@ public class EntityVFX : MonoBehaviour
     [SerializeField]
     private GameObject critHitVFX;
 
+    [Header("Element Colors")]
+    [SerializeField]
+    private Color chilledVFXColor = Color.cyan;
+    private Color originalHitVFXColor;
+
     private void Awake()
     {
         entity = GetComponent<Entity>();
         sr = GetComponentInChildren<SpriteRenderer>();
         originalMaterial = sr.material;
+        originalHitVFXColor = hitVFXColor;
+    }
+
+    public void UpdateOnHitColor(ElementType element)
+    {
+        switch (element)
+        {
+            case ElementType.Ice:
+                hitVFXColor = chilledVFXColor;
+                break;
+            default:
+                hitVFXColor = originalHitVFXColor;
+                break;
+        }
+    }
+
+    public void PlayerOnStatusVFX(float duration, ElementType element)
+    {
+        if (element == ElementType.Ice)
+        {
+            StartCoroutine(PlayerStatusVFXCoroutine(duration, chilledVFXColor));
+        }
+    }
+
+    private IEnumerator PlayerStatusVFXCoroutine(float duration, Color effectColor)
+    {
+        float tickInterval = 0.25f;
+        float timer = 0;
+
+        Color lightColor = effectColor * 1.2f;
+        Color darkColor = effectColor * 0.8f;
+
+        bool toggle = false;
+
+        while (timer < duration)
+        {
+            sr.color = toggle ? lightColor : darkColor;
+            toggle = !toggle;
+            yield return new WaitForSeconds(tickInterval);
+            timer = timer + tickInterval;
+        }
+        sr.color = Color.white;
     }
 
     public void CreateHitVFX(Transform target, bool isCrit)
