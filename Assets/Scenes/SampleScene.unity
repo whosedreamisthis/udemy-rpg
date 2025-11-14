@@ -682,6 +682,7 @@ MonoBehaviour:
   hitVFX: {fileID: 1553750464816024984, guid: 8ad353b3837b5c344970b5776a172efe, type: 3}
   critHitVFX: {fileID: 0}
   chilledVFXColor: {r: 0.18396229, g: 0.69787586, b: 1, a: 1}
+  burnedVFXColor: {r: 1, g: 0, b: 0, a: 1}
   attackAlert: {fileID: 2057589849}
 --- !u!114 &198459157
 MonoBehaviour:
@@ -696,7 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   maxHealth:
-    baseValue: 10000
+    baseValue: 300
   major:
     strength:
       baseValue: 0
@@ -1006,6 +1007,7 @@ MonoBehaviour:
   hitVFX: {fileID: 1553750464816024984, guid: 8ad353b3837b5c344970b5776a172efe, type: 3}
   critHitVFX: {fileID: 4055276110649176254, guid: 20ab226bc39c1264f9e6370a6a4d1eae, type: 3}
   chilledVFXColor: {r: 0.18431373, g: 0.69803923, b: 1, a: 1}
+  burnedVFXColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &274070550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1062,7 +1064,7 @@ MonoBehaviour:
       baseValue: 0
   offense:
     damage:
-      baseValue: 10
+      baseValue: 0
     critPower:
       baseValue: 250
     critChance:
@@ -1070,9 +1072,9 @@ MonoBehaviour:
     armorReduction:
       baseValue: 0
     fireDamage:
-      baseValue: 0
+      baseValue: 100
     iceDamage:
-      baseValue: 10
+      baseValue: 0
     lightningDamage:
       baseValue: 0
 --- !u!114 &274070552
@@ -1227,6 +1229,7 @@ MonoBehaviour:
   hitVFX: {fileID: 0}
   critHitVFX: {fileID: 0}
   chilledVFXColor: {r: 0, g: 1, b: 1, a: 1}
+  burnedVFXColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &344415102
 GameObject:
   m_ObjectHideFlags: 0
