@@ -723,11 +723,11 @@ MonoBehaviour:
     armorReduction:
       baseValue: 0
     fireDamage:
-      baseValue: 0
+      baseValue: 10
     iceDamage:
-      baseValue: 0
+      baseValue: 7
     lightningDamage:
-      baseValue: 0
+      baseValue: 6
 --- !u!1 &271775033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,7 +1031,7 @@ MonoBehaviour:
       baseValue: 0
   defense:
     armor:
-      baseValue: 400
+      baseValue: 0
     evasion:
       baseValue: 0
     fireRes:

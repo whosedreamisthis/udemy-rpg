@@ -44,7 +44,7 @@ public class EntityHealth : MonoBehaviour, IDamagable
 
     private bool AttackEvaded() => Random.Range(0f, 100f) < stats.GetEvasion();
 
-    public virtual bool TakeDamage(float damage, Transform damageDealer)
+    public virtual bool TakeDamage(float damage, float elementalDamage, Transform damageDealer)
     {
         if (isDead)
             return false;
@@ -66,7 +66,7 @@ public class EntityHealth : MonoBehaviour, IDamagable
         entityVFX?.PlayOnDamageVFX();
 
         ReduceHp(damage);
-        Debug.Log($"Damage taken: {damage}");
+        Debug.Log($"Elemental Damage taken: {elementalDamage}");
         return true;
     }
 
