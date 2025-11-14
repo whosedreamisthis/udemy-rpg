@@ -720,6 +720,8 @@ MonoBehaviour:
       baseValue: 0
     critChance:
       baseValue: 0
+    armorReduction:
+      baseValue: 0
     fireDamage:
       baseValue: 0
     iceDamage:
@@ -1026,10 +1028,10 @@ MonoBehaviour:
     intelligence:
       baseValue: 0
     vitality:
-      baseValue: 7
+      baseValue: 0
   defense:
     armor:
-      baseValue: 0
+      baseValue: 400
     evasion:
       baseValue: 0
     fireRes:
@@ -1045,6 +1047,8 @@ MonoBehaviour:
       baseValue: 250
     critChance:
       baseValue: 100
+    armorReduction:
+      baseValue: 0
     fireDamage:
       baseValue: 0
     iceDamage:
