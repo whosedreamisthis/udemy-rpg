@@ -28,9 +28,10 @@ public class EntityStats : MonoBehaviour
 
     public float GetMaxHealth()
     {
-        float baseHp = maxHealth.GetValue();
-        float bonusHp = major.vitality.GetValue() * 5;
-        return baseHp + bonusHp;
+        float baseMaxHealth = maxHealth.GetValue();
+        float bonusMaxHealth = major.vitality.GetValue() * 5;
+        float finalMaxHealth = baseMaxHealth + bonusMaxHealth;
+        return finalMaxHealth;
     }
 
     public float GetEvasion()
