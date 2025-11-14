@@ -32,6 +32,9 @@ public class EntityVFX : MonoBehaviour
 
     [SerializeField]
     private Color burnedVFXColor = Color.red;
+
+    [SerializeField]
+    private Color electrifiedVFXColor = Color.yellow;
     private Color originalHitVFXColor;
 
     private void Awake()
@@ -52,6 +55,9 @@ public class EntityVFX : MonoBehaviour
             case ElementType.Fire:
                 hitVFXColor = burnedVFXColor;
                 break;
+            case ElementType.Lightning:
+                hitVFXColor = electrifiedVFXColor;
+                break;
             default:
                 hitVFXColor = originalHitVFXColor;
                 break;
@@ -68,6 +74,17 @@ public class EntityVFX : MonoBehaviour
         {
             StartCoroutine(PlayerStatusVFXCoroutine(duration, burnedVFXColor));
         }
+        if (element == ElementType.Lightning)
+        {
+            StartCoroutine(PlayerStatusVFXCoroutine(duration, electrifiedVFXColor));
+        }
+    }
+
+    public void StopAllVFX()
+    {
+        StopAllCoroutines();
+        sr.color = Color.white;
+        sr.material = originalMaterial;
     }
 
     private IEnumerator PlayerStatusVFXCoroutine(float duration, Color effectColor)

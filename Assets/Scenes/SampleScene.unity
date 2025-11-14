@@ -645,6 +645,7 @@ MonoBehaviour:
     m_Bits: 128
   defaultDuration: 3
   chilledSlowMultiplier: 0.4
+  electrifiedChargBuildup: 0.4
 --- !u!114 &198459155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +684,7 @@ MonoBehaviour:
   critHitVFX: {fileID: 0}
   chilledVFXColor: {r: 0.18396229, g: 0.69787586, b: 1, a: 1}
   burnedVFXColor: {r: 1, g: 0, b: 0, a: 1}
+  electrifiedVFXColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   attackAlert: {fileID: 2057589849}
 --- !u!114 &198459157
 MonoBehaviour:
@@ -697,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   maxHealth:
-    baseValue: 300
+    baseValue: 3000
   major:
     strength:
       baseValue: 0
@@ -717,7 +719,7 @@ MonoBehaviour:
     iceRes:
       baseValue: 0
     lightningRes:
-      baseValue: 0
+      baseValue: 60
   offense:
     damage:
       baseValue: 10
@@ -728,11 +730,11 @@ MonoBehaviour:
     armorReduction:
       baseValue: 0
     fireDamage:
-      baseValue: 1
+      baseValue: 0
     iceDamage:
-      baseValue: 25
+      baseValue: 0
     lightningDamage:
-      baseValue: 6
+      baseValue: 0
 --- !u!114 &198459158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +747,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50db7d0e0aec2f41b6f7ccbd2f8e876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStatusHandler
+  lightningStrikeVFX: {fileID: 3603698066376191988, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+  currentCharge: 0
+  maximumCharge: 1
 --- !u!1 &271775033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +1013,7 @@ MonoBehaviour:
   critHitVFX: {fileID: 4055276110649176254, guid: 20ab226bc39c1264f9e6370a6a4d1eae, type: 3}
   chilledVFXColor: {r: 0.18431373, g: 0.69803923, b: 1, a: 1}
   burnedVFXColor: {r: 1, g: 0, b: 0, a: 1}
+  electrifiedVFXColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &274070550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,6 +1033,7 @@ MonoBehaviour:
     m_Bits: 256
   defaultDuration: 3
   chilledSlowMultiplier: 0.4
+  electrifiedChargBuildup: 0.4
   counterRecovery: 0.1
 --- !u!114 &274070551
 MonoBehaviour:
@@ -1057,7 +1064,7 @@ MonoBehaviour:
     evasion:
       baseValue: 0
     fireRes:
-      baseValue: 35
+      baseValue: 0
     iceRes:
       baseValue: 0
     lightningRes:
@@ -1066,17 +1073,17 @@ MonoBehaviour:
     damage:
       baseValue: 0
     critPower:
-      baseValue: 250
+      baseValue: 0
     critChance:
-      baseValue: 100
+      baseValue: 0
     armorReduction:
       baseValue: 0
     fireDamage:
-      baseValue: 100
+      baseValue: 0
     iceDamage:
       baseValue: 0
     lightningDamage:
-      baseValue: 0
+      baseValue: 50
 --- !u!114 &274070552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,6 +1096,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50db7d0e0aec2f41b6f7ccbd2f8e876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStatusHandler
+  lightningStrikeVFX: {fileID: 3603698066376191988, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+  currentCharge: 0
+  maximumCharge: 1
 --- !u!1 &302591373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,6 +1240,7 @@ MonoBehaviour:
   critHitVFX: {fileID: 0}
   chilledVFXColor: {r: 0, g: 1, b: 1, a: 1}
   burnedVFXColor: {r: 1, g: 0, b: 0, a: 1}
+  electrifiedVFXColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &344415102
 GameObject:
   m_ObjectHideFlags: 0
@@ -63484,6 +63495,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2095304665
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3603698066376191988, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_Name
+      value: VFXLightningStrike
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603698066376191988, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837399668437013412, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c61170fb95d5134783c66bff58904e2, type: 3}
 --- !u!1 &2141347508
 GameObject:
   m_ObjectHideFlags: 0
@@ -63532,3 +63604,4 @@ SceneRoots:
   - {fileID: 198459151}
   - {fileID: 302591374}
   - {fileID: 1530116277}
+  - {fileID: 2095304665}

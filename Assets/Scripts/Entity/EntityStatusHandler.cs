@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,12 +12,66 @@ public class EntityStatusHandler : MonoBehaviour
     private EntityHealth entityHealth;
     private ElementType currentEffect = ElementType.None;
 
+    [Header("Electrify Effect Details")]
+    [SerializeField]
+    private GameObject lightningStrikeVFX;
+
+    [SerializeField]
+    private float currentCharge;
+
+    [SerializeField]
+    private float maximumCharge = 1;
+    private Coroutine electrifiedCoroutine;
+
     private void Awake()
     {
         entity = GetComponent<Entity>();
         entityVFX = GetComponent<EntityVFX>();
         entityStats = GetComponent<EntityStats>();
         entityHealth = GetComponent<EntityHealth>();
+    }
+
+    public void ApplyElectrifiedEffect(float duration, float damage, float charge)
+    {
+        float lightningResistance = entityStats.GetElementalResistance(ElementType.Lightning);
+        float finalCharge = charge * (1 - lightningResistance);
+        currentCharge += finalCharge;
+
+        if (currentCharge >= maximumCharge)
+        {
+            DoLightningStrike(damage);
+            StopElectrifiedEffect();
+            return;
+        }
+
+        if (electrifiedCoroutine != null)
+        {
+            StopCoroutine(electrifiedCoroutine);
+        }
+
+        electrifiedCoroutine = StartCoroutine(ElectrifiedEffectCoroutine(duration));
+    }
+
+    private void StopElectrifiedEffect()
+    {
+        currentEffect = ElementType.None;
+        currentCharge = 0;
+        entityVFX.StopAllVFX();
+    }
+
+    private void DoLightningStrike(float damage)
+    {
+        Instantiate(lightningStrikeVFX, transform.position, quaternion.identity);
+        entityHealth.ReduceHp(damage);
+    }
+
+    private IEnumerator ElectrifiedEffectCoroutine(float duration)
+    {
+        currentEffect = ElementType.Lightning;
+        entityVFX.PlayerOnStatusVFX(duration, ElementType.Lightning);
+
+        yield return new WaitForSeconds(duration);
+        StopElectrifiedEffect();
     }
 
     public void ApplyBurnedEffect(float duration, float totalDamage)
@@ -66,6 +121,10 @@ public class EntityStatusHandler : MonoBehaviour
 
     public bool CanBeApplied(ElementType element)
     {
+        if (element == ElementType.Lightning && currentEffect == ElementType.Lightning)
+        {
+            return true;
+        }
         return currentEffect == ElementType.None;
     }
 }

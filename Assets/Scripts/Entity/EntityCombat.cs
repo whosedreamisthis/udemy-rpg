@@ -23,6 +23,16 @@ public class EntityCombat : MonoBehaviour
     [SerializeField]
     private float chilledSlowMultiplier = 0.8f;
 
+    [SerializeField]
+    private float electrifiedChargBuildup = 0.4f;
+
+    [Space]
+    [SerializeField]
+    private float fireScale = 0.8f;
+
+    [SerializeField]
+    private float lightningScale = 2.5f;
+
     public void Awake()
     {
         vfx = GetComponent<EntityVFX>();
@@ -70,8 +80,20 @@ public class EntityCombat : MonoBehaviour
 
         if (element == ElementType.Fire && statusHandler.CanBeApplied(element))
         {
+            scaleFactor = fireScale;
             float fireDamage = stats.offense.fireDamage.GetValue() * scaleFactor;
             statusHandler.ApplyBurnedEffect(defaultDuration, fireDamage);
+        }
+
+        if (element == ElementType.Lightning && statusHandler.CanBeApplied(ElementType.Lightning))
+        {
+            scaleFactor = lightningScale;
+            float lightningDamage = stats.offense.lightningDamage.GetValue() * scaleFactor;
+            statusHandler.ApplyElectrifiedEffect(
+                defaultDuration,
+                lightningDamage,
+                electrifiedChargBuildup
+            );
         }
     }
 
