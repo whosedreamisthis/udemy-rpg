@@ -4,9 +4,14 @@ public class EnemyHealth : EntityHealth
 {
     private Enemy enemy => GetComponent<Enemy>();
 
-    public override bool TakeDamage(float damage, float elementalDamage, Transform damageDealer)
+    public override bool TakeDamage(
+        float damage,
+        float elementalDamage,
+        ElementType element,
+        Transform damageDealer
+    )
     {
-        bool targetWasHit = base.TakeDamage(damage, elementalDamage, damageDealer);
+        bool targetWasHit = base.TakeDamage(damage, elementalDamage, element, damageDealer);
 
         if (!targetWasHit)
         {

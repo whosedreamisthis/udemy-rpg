@@ -723,9 +723,9 @@ MonoBehaviour:
     armorReduction:
       baseValue: 0
     fireDamage:
-      baseValue: 10
+      baseValue: 100
     iceDamage:
-      baseValue: 7
+      baseValue: 25
     lightningDamage:
       baseValue: 6
 --- !u!1 &271775033
@@ -1035,7 +1035,7 @@ MonoBehaviour:
     evasion:
       baseValue: 0
     fireRes:
-      baseValue: 0
+      baseValue: 35
     iceRes:
       baseValue: 0
     lightningRes:
