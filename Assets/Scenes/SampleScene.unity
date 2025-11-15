@@ -646,6 +646,8 @@ MonoBehaviour:
   defaultDuration: 3
   chilledSlowMultiplier: 0.4
   electrifiedChargBuildup: 0.4
+  fireScale: 0.8
+  lightningScale: 2.5
 --- !u!114 &198459155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,8 +660,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6acd64c6cc3079940a926ab9b0e5f594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  currentHp: 0
+  currentHealth: 0
   isDead: 0
+  regenInterval: 0
+  canRegenerateHealth: 1
   knockbackForce: {x: 5, y: 5}
   heavyKnockbackForce: {x: 7, y: 7}
   knockbackDuration: 0.2
@@ -698,8 +702,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f5bd835161fa04ba504520420fc8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
-  maxHealth:
-    baseValue: 3000
+  resources:
+    maxHealth:
+      baseValue: 1000
+    healthRegen:
+      baseValue: 0
   major:
     strength:
       baseValue: 0
@@ -721,8 +728,10 @@ MonoBehaviour:
     lightningRes:
       baseValue: 60
   offense:
+    attackSpeed:
+      baseValue: 0
     damage:
-      baseValue: 10
+      baseValue: 150
     critPower:
       baseValue: 0
     critChance:
@@ -987,8 +996,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde060e064f7fa14ea079c874dc54cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
-  currentHp: 0
+  currentHealth: 0
   isDead: 0
+  regenInterval: 1
+  canRegenerateHealth: 1
   knockbackForce: {x: 5, y: 5}
   heavyKnockbackForce: {x: 7, y: 7}
   knockbackDuration: 0.2
@@ -1034,6 +1045,8 @@ MonoBehaviour:
   defaultDuration: 3
   chilledSlowMultiplier: 0.4
   electrifiedChargBuildup: 0.4
+  fireScale: 0.8
+  lightningScale: 2.5
   counterRecovery: 0.1
 --- !u!114 &274070551
 MonoBehaviour:
@@ -1047,8 +1060,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f5bd835161fa04ba504520420fc8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
-  maxHealth:
-    baseValue: 10000
+  resources:
+    maxHealth:
+      baseValue: 1000
+    healthRegen:
+      baseValue: 40
   major:
     strength:
       baseValue: 0
@@ -1070,6 +1086,8 @@ MonoBehaviour:
     lightningRes:
       baseValue: 0
   offense:
+    attackSpeed:
+      baseValue: 0
     damage:
       baseValue: 0
     critPower:
@@ -1081,7 +1099,7 @@ MonoBehaviour:
     fireDamage:
       baseValue: 0
     iceDamage:
-      baseValue: 0
+      baseValue: 100
     lightningDamage:
       baseValue: 50
 --- !u!114 &274070552

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
-    public Stat maxHealth;
+    public StatsResourceGroup resources;
     public StatsMajorGroup major;
     public StatsDefenseGroup defense;
     public StatsOffenseGroup offense;
@@ -113,7 +113,7 @@ public class EntityStats : MonoBehaviour
 
     public float GetMaxHealth()
     {
-        float baseMaxHealth = maxHealth.GetValue();
+        float baseMaxHealth = resources.maxHealth.GetValue();
         float bonusMaxHealth = major.vitality.GetValue() * 5;
         float finalMaxHealth = baseMaxHealth + bonusMaxHealth;
         return finalMaxHealth;
