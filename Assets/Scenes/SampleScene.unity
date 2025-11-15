@@ -729,7 +729,7 @@ MonoBehaviour:
       baseValue: 60
   offense:
     attackSpeed:
-      baseValue: 0
+      baseValue: 1
     damage:
       baseValue: 150
     critPower:
@@ -1087,7 +1087,7 @@ MonoBehaviour:
       baseValue: 0
   offense:
     attackSpeed:
-      baseValue: 0
+      baseValue: 1
     damage:
       baseValue: 0
     critPower:
