@@ -10,6 +10,12 @@ public class UITreeNode
         IPointerDownHandler
 {
     [SerializeField]
+    private SkillDataSO skillData;
+
+    [SerializeField]
+    private string skillName;
+
+    [SerializeField]
     private UnityEngine.UI.Image skillIcon;
 
     [SerializeField]
@@ -17,6 +23,16 @@ public class UITreeNode
     private Color lastColor;
     public bool isUnlocked;
     public bool isLocked;
+
+    private void OnValidate()
+    {
+        if (skillData == null)
+            return;
+
+        skillName = skillData.displayName;
+        skillIcon.sprite = skillData.icon;
+        gameObject.name = $"UITreeNode - {skillName}";
+    }
 
     private void Awake()
     {
