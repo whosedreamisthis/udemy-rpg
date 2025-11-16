@@ -161,7 +161,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectBuff
   floatSpeed: 3
   floatRange: 0.2
-  buffDuration: 4
+  buffName: Damage Buff
+  buffs:
+  - type: 6
+    value: 0.4
+  - type: 13
+    value: 40
+  buffDuration: 20
   canBeUsed: 1
 --- !u!61 &6020085766840442803
 BoxCollider2D:

@@ -128,4 +128,52 @@ public class EntityStats : MonoBehaviour
         float finalEvasion = Mathf.Clamp(totalEvasion, 0, evasionCap);
         return finalEvasion;
     }
+
+    public Stat GetStatByType(StatType type)
+    {
+        switch (type)
+        {
+            case StatType.MaxHealth:
+                return resources.maxHealth;
+            case StatType.HealthRegen:
+                return resources.healthRegen;
+            case StatType.Strength:
+                return major.strength;
+            case StatType.Agility:
+                return major.agility;
+            case StatType.Vitality:
+                return major.vitality;
+            case StatType.Intelligence:
+                return major.intelligence;
+            case StatType.Damage:
+                return offense.damage;
+            case StatType.AttackSpeed:
+                return offense.attackSpeed;
+            case StatType.CritPower:
+                return offense.critPower;
+            case StatType.CritChance:
+                return offense.critChance;
+            case StatType.ArmorReduction:
+                return offense.armorReduction;
+            case StatType.FireDamage:
+                return offense.fireDamage;
+            case StatType.IceDamage:
+                return offense.iceDamage;
+            case StatType.LightningDamage:
+                return offense.lightningDamage;
+            case StatType.Armor:
+                return defense.armor;
+            case StatType.Evasion:
+                return defense.evasion;
+            case StatType.FireResistance:
+                return defense.fireRes;
+            case StatType.IceResistance:
+                return defense.iceRes;
+            case StatType.LightningResistance:
+                return defense.lightningRes;
+            default:
+                Debug.LogWarning($"Stat type {type} has not been implemented yet.");
+                return null;
+        }
+    }
 }
