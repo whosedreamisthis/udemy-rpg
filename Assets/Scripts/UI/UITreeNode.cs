@@ -10,6 +10,11 @@ public class UITreeNode
         IPointerDownHandler
 {
     [SerializeField]
+    private UI ui;
+
+    private RectTransform rect;
+
+    [SerializeField]
     private SkillDataSO skillData;
 
     [SerializeField]
@@ -24,18 +29,10 @@ public class UITreeNode
     public bool isUnlocked;
     public bool isLocked;
 
-    private void OnValidate()
-    {
-        if (skillData == null)
-            return;
-
-        skillName = skillData.displayName;
-        skillIcon.sprite = skillData.icon;
-        gameObject.name = $"UITreeNode - {skillName}";
-    }
-
     private void Awake()
     {
+        ui = GetComponentInParent<UI>();
+        rect = GetComponent<RectTransform>();
         isLocked = false;
         isUnlocked = false;
         UpdateIconColor(GetColorByHex(lockedColorHex));
@@ -80,6 +77,7 @@ public class UITreeNode
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        ui.skillTookTip.ShowToolTip(true, rect, skillData);
         if (!isUnlocked)
         {
             UpdateIconColor(Color.white * 0.9f);
@@ -88,6 +86,7 @@ public class UITreeNode
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        ui.skillTookTip.ShowToolTip(false, rect);
         if (!isUnlocked)
         {
             UpdateIconColor(lastColor);
@@ -98,5 +97,15 @@ public class UITreeNode
     {
         ColorUtility.TryParseHtmlString(hexNumber, out Color color);
         return color;
+    }
+
+    private void OnValidate()
+    {
+        if (skillData == null)
+            return;
+
+        skillName = skillData.displayName;
+        skillIcon.sprite = skillData.icon;
+        gameObject.name = $"UITreeNode - {skillName}";
     }
 }
