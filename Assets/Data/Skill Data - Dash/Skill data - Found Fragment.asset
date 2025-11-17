@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
   cost: 3
   skillType: 0
-  upgradeType: 4
+  upgradeData:
+    type: 4
+    cooldown: 3
   displayName: Found Fragment
   description: 'Create a Time Shard on arrival.
 

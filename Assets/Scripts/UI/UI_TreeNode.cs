@@ -69,7 +69,7 @@ public class UI_TreeNode
         // Find Player_SkillManager
         skillTree
             .skillManager.GetSkillByType(skillData.skillType)
-            .SetSkillUpgrade(skillData.upgradeType);
+            .SetSkillUpgrade(skillData.upgradeData);
         // Unlock skill on skill manager
         // skill manager unlock skill from skill data skill type
     }

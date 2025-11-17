@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
   cost: 0
   skillType: 0
-  upgradeType: 0
+  upgradeData:
+    type: 0
+    cooldown: 3
   displayName: Quick Dash
   description: Dash to avoid attacks.
   icon: {fileID: 900771226, guid: 7ae0115109b4a6f42a4f7ad59397d09b, type: 3}
