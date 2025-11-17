@@ -9,7 +9,9 @@ public class Player : Entity
 
     private UI ui;
     public PlayerInputSet input { get; private set; }
+    public Player_SkillManager skillManager { get; private set; }
 
+    #region State Variables
     public Player_IdleState idleState { get; private set; }
     public Player_MoveState moveState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
@@ -22,6 +24,8 @@ public class Player : Entity
     public Player_DeadState deadState { get; private set; }
     public Player_CounterAttackState counterAttackState { get; private set; }
 
+    #endregion
+
     [Header("Attack details")]
     public Vector2[] attackVelocity;
     public Vector2 jumpAttackVelocity;
@@ -29,15 +33,17 @@ public class Player : Entity
     public float comboResetTime = 1;
     private Coroutine queuedAttackCo;
 
-
     [Header("Movement details")]
     public float moveSpeed;
     public float jumpForce = 5;
     public Vector2 wallJumpForce;
+
     [Range(0, 1)]
     public float inAirMoveMultiplier = .7f; // Should be from 0 to 1;
+
     [Range(0, 1)]
     public float wallSlideSlowMultiplier = .7f;
+
     [Space]
     public float dashDuration = .25f;
     public float dashSpeed = 20;
@@ -49,7 +55,7 @@ public class Player : Entity
 
         ui = FindAnyObjectByType<UI>();
         input = new PlayerInputSet();
-
+        skillManager = GetComponent<Player_SkillManager>();
 
         idleState = new Player_IdleState(this, stateMachine, "idle");
         moveState = new Player_MoveState(this, stateMachine, "move");
