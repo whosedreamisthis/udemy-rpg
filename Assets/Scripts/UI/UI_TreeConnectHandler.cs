@@ -7,15 +7,24 @@ public class UI_TreeConnectDetails
 {
     public UI_TreeConnectHandler childNode;
     public NodeDirectionType direction;
-    [Range(100f, 350f)] public float length = 150f;
-    [Range(-50f, 50f)] public float rotation;
+
+    [Range(100f, 350f)]
+    public float length = 150f;
+
+    [Range(-50f, 50f)]
+    public float rotation;
 }
+
 [ExecuteAlways]
 public class UI_TreeConnectHandler : MonoBehaviour
 {
     private RectTransform rect => GetComponent<RectTransform>();
-    [SerializeField] private UI_TreeConnectDetails[] connectionDetails;
-    [SerializeField] private UI_TreeConnection[] connections;
+
+    [SerializeField]
+    private UI_TreeConnectDetails[] connectionDetails;
+
+    [SerializeField]
+    private UI_TreeConnection[] connections;
 
     private Vector2 lastTargetPosition;
     private Image connectionImage;
@@ -23,7 +32,7 @@ public class UI_TreeConnectHandler : MonoBehaviour
 
     private void Awake()
     {
-        if(connectionImage != null)
+        if (connectionImage != null)
             originalColor = connectionImage.color;
     }
 
@@ -34,7 +43,9 @@ public class UI_TreeConnectHandler : MonoBehaviour
 
         if (connectionDetails.Length != connections.Length)
         {
-            Debug.Log("Amount of details should be same as amount of connections. - " + gameObject.name);
+            Debug.Log(
+                "Amount of details should be same as amount of connections. - " + gameObject.name
+            );
             return;
         }
 
@@ -58,8 +69,8 @@ public class UI_TreeConnectHandler : MonoBehaviour
 
             detail.childNode.SetPosition(targetPosition);
             detail.childNode.SetConnectionImage(connectionImage);
-            detail.childNode.transform.SetAsLastSibling();
-        }       
+            // detail.childNode.transform.SetAsLastSibling();
+        }
     }
 
     public void UpdateAllConnections()
@@ -68,7 +79,8 @@ public class UI_TreeConnectHandler : MonoBehaviour
 
         foreach (var node in connectionDetails)
         {
-            if(node.childNode == null) continue;
+            if (node.childNode == null)
+                continue;
             node.childNode?.UpdateConnections();
         }
     }
@@ -82,5 +94,6 @@ public class UI_TreeConnectHandler : MonoBehaviour
     }
 
     public void SetConnectionImage(Image image) => connectionImage = image;
+
     public void SetPosition(Vector2 position) => rect.anchoredPosition = position;
 }
