@@ -4,18 +4,16 @@ public class Player_JumpAttackState : PlayerState
 {
     private bool touchedGround;
 
-    public Player_JumpAttackState(Player player, StateMachine stateMachine, string animBoolName)
-        : base(player, stateMachine, animBoolName) { }
+    public Player_JumpAttackState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    {
+    }
 
     public override void Enter()
     {
         base.Enter();
         touchedGround = false;
 
-        player.SetVelocity(
-            player.jumpAttackVelocity.x * player.facingDir,
-            player.jumpAttackVelocity.y
-        );
+        player.SetVelocity(player.jumpAttackVelocity.x * player.facingDir, player.jumpAttackVelocity.y);
     }
 
     public override void Update()
@@ -32,4 +30,5 @@ public class Player_JumpAttackState : PlayerState
         if (triggerCalled && player.groundDetected)
             stateMachine.ChangeState(player.idleState);
     }
+
 }

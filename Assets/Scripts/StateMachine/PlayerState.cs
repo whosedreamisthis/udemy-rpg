@@ -3,18 +3,16 @@ using UnityEngine;
 public abstract class PlayerState : EntityState
 {
     protected Player player;
-
     protected PlayerInputSet input;
 
-    public PlayerState(Player player, StateMachine stateMachine, string animBoolName)
-        : base(stateMachine, animBoolName)
+    public PlayerState(Player player, StateMachine stateMachine, string animBoolName) : base(stateMachine, animBoolName)
     {
         this.player = player;
 
         anim = player.anim;
         rb = player.rb;
-        stats = player.stats;
         input = player.input;
+        stats = player.stats;
     }
 
     public override void Update()

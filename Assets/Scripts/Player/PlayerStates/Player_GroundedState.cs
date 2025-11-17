@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Player_GroundedState : PlayerState
 {
-    public Player_GroundedState(Player player, StateMachine stateMachine, string animBoolName)
-        : base(player, stateMachine, animBoolName) { }
+    public Player_GroundedState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    {
+    }
 
     public override void Update()
     {
@@ -15,7 +16,7 @@ public class Player_GroundedState : PlayerState
         if (input.Player.Jump.WasPressedThisFrame())
             stateMachine.ChangeState(player.jumpState);
 
-        if (input.Player.Attack.WasPerformedThisFrame())
+        if (input.Player.Attack.WasPressedThisFrame())
             stateMachine.ChangeState(player.basicAttackState);
 
         if (input.Player.CounterAttack.WasPressedThisFrame())

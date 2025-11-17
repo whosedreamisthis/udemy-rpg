@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4393a9cc98fad489eba85e4b53ff86, type: 3}
-  m_Name: Skill data - Time Echo
-  m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
+  m_Script: {fileID: 11500000, guid: 1b05f30c54261b84c806ef06deeb4a03, type: 3}
+  m_Name: Skill data - Time echo
+  m_EditorClassIdentifier: 
   cost: 1
-  displayName: Time Echo
-  description: Create a time echo (clone) of yourself. The echo distracts enemies.
-  icon: {fileID: 802317051, guid: 42bba527e2a1ec04b8377c8e97ff0d88, type: 3}
+  displayName: Time echo
+  description: 'Create a time echo of yourself.
+
+    The echo will distracts enemies.'
+  icon: {fileID: -7293604, guid: 7ae0115109b4a6f42a4f7ad59397d09b, type: 3}

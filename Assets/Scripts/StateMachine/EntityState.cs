@@ -1,19 +1,18 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class EntityState
+public abstract class EntityState 
 {
     protected StateMachine stateMachine;
     protected string animBoolName;
 
     protected Animator anim;
     protected Rigidbody2D rb;
-    protected EntityStats stats;
+    protected Entity_Stats stats;
 
     protected float stateTimer;
     protected bool triggerCalled;
 
-    protected EntityState(StateMachine stateMachine, string animBoolName)
+    public EntityState(StateMachine stateMachine, string animBoolName)
     {
         this.stateMachine = stateMachine;
         this.animBoolName = animBoolName;
@@ -41,7 +40,10 @@ public abstract class EntityState
         triggerCalled = true;
     }
 
-    public virtual void UpdateAnimationParameters() { }
+    public virtual void UpdateAnimationParameters()
+    {
+
+    }
 
     public void SyncAttackSpeed()
     {

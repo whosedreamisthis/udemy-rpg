@@ -1,14 +1,16 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class Player_WallSlideState : PlayerState
 {
-    public Player_WallSlideState(Player player, StateMachine stateMachine, string animBoolName)
-        : base(player, stateMachine, animBoolName) { }
+    public Player_WallSlideState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    {
+    }
 
     public override void Update()
     {
         base.Update();
         HandleWallSlide();
+
 
         if (input.Player.Jump.WasPressedThisFrame())
             stateMachine.ChangeState(player.wallJumpState);
@@ -20,7 +22,7 @@ public class Player_WallSlideState : PlayerState
         {
             stateMachine.ChangeState(player.idleState);
 
-            if (player.facingDir != player.moveInput.x)
+            if(player.facingDir != player.moveInput.x)
                 player.Flip();
         }
     }
@@ -30,9 +32,6 @@ public class Player_WallSlideState : PlayerState
         if (player.moveInput.y < 0)
             player.SetVelocity(player.moveInput.x, rb.linearVelocity.y);
         else
-            player.SetVelocity(
-                player.moveInput.x,
-                rb.linearVelocity.y * player.wallSlideSlowMultiplier
-            );
+            player.SetVelocity(player.moveInput.x, rb.linearVelocity.y * player.wallSlideSlowMultiplier);
     }
 }

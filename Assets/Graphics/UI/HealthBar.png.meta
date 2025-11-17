@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 9ac1be705c2f44c4f91238b371029b70
+guid: c2792b0718975e4498af022e6a56b251
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8227546954408941770
-    second: HealthBar_0
+      213: 5972140380756631857
+    second: health_bar_0
   - first:
-      213: -3178617384780871938
-    second: HealthBar_1
+      213: -6905963577513531043
+    second: health_bar_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -99,50 +99,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HealthBar_0
+      name: health_bar_0
       rect:
         serializedVersion: 2
         x: 20
@@ -157,52 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 637ab99e2a1e1dd80800000000000000
-      internalID: -8227546954408941770
+      spriteID: 131e3c7d80e41e250800000000000000
+      internalID: 5972140380756631857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HealthBar_1
+      name: health_bar_1
       rect:
         serializedVersion: 2
-        x: 227
+        x: 226
         y: 84
-        width: 272
-        height: 71
+        width: 274
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 18, y: 19, z: 16, w: 10}
+      border: {x: 17, y: 18, z: 16, w: 18}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef6414f545843e3d0800000000000000
-      internalID: -3178617384780871938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HealthBar_2
-      rect:
-        serializedVersion: 2
-        x: 306
-        y: 179
-        width: 64
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a32af9c9656a084a8274fe0d9a4855a
-      internalID: 208737574
+      spriteID: d59258237b61920a0800000000000000
+      internalID: -6905963577513531043
       vertices: []
       indices: 
       edges: []
@@ -211,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 37534dc767c83f14698264e69a479481
+    spriteID: 3440517c673473148a48f324f9b136af
     internalID: 0
     vertices: []
     indices: 
@@ -221,9 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HealthBar_0: -8227546954408941770
-      HealthBar_1: -3178617384780871938
-      HealthBar_2: 208737574
+      health_bar_0: 5972140380756631857
+      health_bar_1: -6905963577513531043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
