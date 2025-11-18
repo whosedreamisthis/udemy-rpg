@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class SkillObject_Shard : SkillObject_Base
 {
+    public event Action OnExplode;
+
     [SerializeField]
     private GameObject vfxPrefab;
     private Transform target;
@@ -40,10 +43,11 @@ public class SkillObject_Shard : SkillObject_Base
         Explode();
     }
 
-    private void Explode()
+    public void Explode()
     {
         DamageEnemiesInRadius(transform, checkRadius);
         Instantiate(vfxPrefab, transform.position, Quaternion.identity);
+        OnExplode?.Invoke();
         Destroy(gameObject);
     }
 }

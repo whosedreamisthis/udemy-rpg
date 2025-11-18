@@ -5,16 +5,16 @@ public class Skill_Dash : Skill_Base
     public void OnStartEffect()
     {
         if (
-            UnLocked(SkillUpgradeType.Dash_CloneOnStart)
-            || UnLocked(SkillUpgradeType.Dash_CloneOnStartAndArrival)
+            Unlocked(SkillUpgradeType.Dash_CloneOnStart)
+            || Unlocked(SkillUpgradeType.Dash_CloneOnStartAndArrival)
         )
         {
             CreateClone();
         }
 
         if (
-            UnLocked(SkillUpgradeType.Dash_ShardOnStart)
-            || UnLocked(SkillUpgradeType.Dash_ShardOnStartAndArrival)
+            Unlocked(SkillUpgradeType.Dash_ShardOnStart)
+            || Unlocked(SkillUpgradeType.Dash_ShardOnStartAndArrival)
         )
         {
             CreateShard();
@@ -23,12 +23,12 @@ public class Skill_Dash : Skill_Base
 
     public void OnEndEffect()
     {
-        if (UnLocked(SkillUpgradeType.Dash_CloneOnStartAndArrival))
+        if (Unlocked(SkillUpgradeType.Dash_CloneOnStartAndArrival))
         {
             CreateClone();
         }
 
-        if (UnLocked(SkillUpgradeType.Dash_ShardOnStartAndArrival))
+        if (Unlocked(SkillUpgradeType.Dash_ShardOnStartAndArrival))
         {
             CreateShard();
         }

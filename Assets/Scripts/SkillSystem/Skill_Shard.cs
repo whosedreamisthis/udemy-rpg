@@ -25,6 +25,10 @@ public class Skill_Shard : Skill_Base
     [SerializeField]
     private bool isRecharging;
 
+    [Header("Teleport Shard Upgrade")]
+    [SerializeField]
+    private float shardExistDuration = 10;
+
     protected override void Awake()
     {
         base.Awake();
@@ -37,20 +41,47 @@ public class Skill_Shard : Skill_Base
         if (CanUseSkill() == false)
             return;
 
-        if (UnLocked(SkillUpgradeType.Shard))
+        if (Unlocked(SkillUpgradeType.Shard))
         {
             HandleShardRegular();
         }
 
-        if (UnLocked(SkillUpgradeType.Shard_MoveToEnemy))
+        if (Unlocked(SkillUpgradeType.Shard_MoveToEnemy))
         {
             HandleShardMoving();
         }
 
-        if (UnLocked(SkillUpgradeType.Shard_MultiCast))
+        if (Unlocked(SkillUpgradeType.Shard_MultiCast))
         {
             HandleMulticast();
         }
+        if (Unlocked(SkillUpgradeType.Shard_Teleport))
+        {
+            HandleShardTeleport();
+        }
+    }
+
+    private void HandleShardTeleport()
+    {
+        if (currentShard == null)
+        {
+            CreateShard();
+            SetSkillOnCooldown();
+        }
+        else
+        {
+            SwapPlayerAndShard();
+        }
+    }
+
+    private void SwapPlayerAndShard()
+    {
+        Vector3 shardPosition = currentShard.transform.position;
+        Vector3 playerPosition = player.transform.position;
+
+        currentShard.transform.position = player.transform.position;
+        currentShard.Explode();
+        player.TeleportPlayer(shardPosition);
     }
 
     private void HandleShardRegular()
@@ -96,8 +127,36 @@ public class Skill_Shard : Skill_Base
 
     public void CreateShard()
     {
+        float time = GetDetonationTime();
         GameObject shard = Instantiate(shardPrefab, transform.position, Quaternion.identity);
         currentShard = shard.GetComponent<SkillObject_Shard>();
-        currentShard.SetupShard(detonationTime);
+        currentShard.SetupShard(time);
+
+        if (
+            Unlocked(SkillUpgradeType.Shard_Teleport)
+            || Unlocked(SkillUpgradeType.Shard_TeleportAndHeal)
+        )
+            currentShard.OnExplode += ForceCooldown;
+    }
+
+    public float GetDetonationTime()
+    {
+        if (
+            Unlocked(SkillUpgradeType.Shard_Teleport)
+            || Unlocked(SkillUpgradeType.Shard_TeleportAndHeal)
+        )
+        {
+            return shardExistDuration;
+        }
+        return detonationTime;
+    }
+
+    private void ForceCooldown()
+    {
+        if (OnCooldown() == false)
+        {
+            SetSkillOnCooldown();
+            currentShard.OnExplode -= ForceCooldown;
+        }
     }
 }
