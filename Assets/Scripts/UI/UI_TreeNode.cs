@@ -45,6 +45,12 @@ public class UI_TreeNode
         UpdateIconColor(GetColorByHex(lockedColorHex));
     }
 
+    private void Start()
+    {
+        if (skillData.unlockedByDefault)
+            Unlock();
+    }
+
     public void Refund()
     {
         isUnlocked = false;

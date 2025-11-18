@@ -26,6 +26,10 @@ public class Skill_Base : MonoBehaviour
 
     public bool CanUseSkill()
     {
+        if (upgradeType == SkillUpgradeType.None)
+        {
+            return false;
+        }
         if (OnCooldown())
         {
             Debug.Log("On Cooldown");

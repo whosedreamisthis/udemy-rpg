@@ -5,6 +5,7 @@ using UnityEngine;
 public class Skill_DataSO : ScriptableObject
 {
     public int cost;
+    public bool unlockedByDefault = false;
     public SkillType skillType;
 
     public UpgradeData upgradeData;
