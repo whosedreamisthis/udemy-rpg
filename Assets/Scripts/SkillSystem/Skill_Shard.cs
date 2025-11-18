@@ -4,6 +4,7 @@ using UnityEngine;
 public class Skill_Shard : Skill_Base
 {
     private SkillObject_Shard currentShard;
+    private Entity_Health playerHealth;
 
     [SerializeField]
     private GameObject shardPrefab;
@@ -29,11 +30,16 @@ public class Skill_Shard : Skill_Base
     [SerializeField]
     private float shardExistDuration = 10;
 
+    [Header("Health Rewind Shard Upgrade")]
+    [SerializeField]
+    private float savedHealthPercent;
+
     protected override void Awake()
     {
         base.Awake();
 
         currentCharges = maxCharges;
+        playerHealth = GetComponentInParent<Entity_Health>();
     }
 
     public override void TryUseSkill()
@@ -59,6 +65,25 @@ public class Skill_Shard : Skill_Base
         {
             HandleShardTeleport();
         }
+        if (Unlocked(SkillUpgradeType.Shard_TeleportHpRewind))
+        {
+            HandleShardHealthRewind();
+        }
+    }
+
+    private void HandleShardHealthRewind()
+    {
+        if (currentShard == null)
+        {
+            CreateShard();
+            savedHealthPercent = playerHealth.GetHealthPercent();
+        }
+        else
+        {
+            SwapPlayerAndShard();
+            playerHealth.SetHealthToPercent(savedHealthPercent);
+            SetSkillOnCooldown();
+        }
     }
 
     private void HandleShardTeleport()
@@ -66,11 +91,11 @@ public class Skill_Shard : Skill_Base
         if (currentShard == null)
         {
             CreateShard();
-            SetSkillOnCooldown();
         }
         else
         {
             SwapPlayerAndShard();
+            SetSkillOnCooldown();
         }
     }
 
@@ -134,7 +159,7 @@ public class Skill_Shard : Skill_Base
 
         if (
             Unlocked(SkillUpgradeType.Shard_Teleport)
-            || Unlocked(SkillUpgradeType.Shard_TeleportAndHeal)
+            || Unlocked(SkillUpgradeType.Shard_TeleportHpRewind)
         )
             currentShard.OnExplode += ForceCooldown;
     }
@@ -143,7 +168,7 @@ public class Skill_Shard : Skill_Base
     {
         if (
             Unlocked(SkillUpgradeType.Shard_Teleport)
-            || Unlocked(SkillUpgradeType.Shard_TeleportAndHeal)
+            || Unlocked(SkillUpgradeType.Shard_TeleportHpRewind)
         )
         {
             return shardExistDuration;
