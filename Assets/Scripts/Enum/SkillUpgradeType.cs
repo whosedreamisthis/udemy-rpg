@@ -10,7 +10,7 @@ public enum SkillUpgradeType
     Dash_ShardOnStartAndArrival,
     Shard,
     Shard_MoveToEnemy,
-    Shard_TripleCast,
+    Shard_MultiCast,
     Shard_Teleport,
     Shard_TeleportAndHeal,
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Skill_Shard : Skill_Base
@@ -14,6 +15,23 @@ public class Skill_Shard : Skill_Base
     [SerializeField]
     private float shardSpeed = 7;
 
+    [Header("Multicast Shard Upgrade")]
+    [SerializeField]
+    private int maxCharges = 3;
+
+    [SerializeField]
+    private int currentCharges;
+
+    [SerializeField]
+    private bool isRecharging;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        currentCharges = maxCharges;
+    }
+
     public override void TryUseSkill()
     {
         if (CanUseSkill() == false)
@@ -28,6 +46,11 @@ public class Skill_Shard : Skill_Base
         {
             HandleShardMoving();
         }
+
+        if (UnLocked(SkillUpgradeType.Shard_MultiCast))
+        {
+            HandleMulticast();
+        }
     }
 
     private void HandleShardRegular()
@@ -41,6 +64,34 @@ public class Skill_Shard : Skill_Base
         CreateShard();
         currentShard.MoveTowardsClosestTarget(shardSpeed);
         SetSkillOnCooldown();
+    }
+
+    private void HandleMulticast()
+    {
+        if (currentCharges <= 0)
+            return;
+        CreateShard();
+        currentShard.MoveTowardsClosestTarget(shardSpeed);
+        currentCharges--;
+
+        if (isRecharging == false)
+        {
+            StartCoroutine(ShardRechargeCoroutine());
+        }
+        // SetSkillOnCooldown();
+    }
+
+    private IEnumerator ShardRechargeCoroutine()
+    {
+        isRecharging = true;
+
+        while (currentCharges < maxCharges)
+        {
+            yield return new WaitForSeconds(cooldown);
+            currentCharges++;
+        }
+
+        isRecharging = false;
     }
 
     public void CreateShard()
