@@ -18,6 +18,8 @@ public class Skill_Base : MonoBehaviour
         lastTimeUsed = lastTimeUsed - cooldown;
     }
 
+    public virtual void TryUseSkill() { }
+
     public void SetSkillUpgrade(UpgradeData upgrade)
     {
         upgradeType = upgrade.type;
@@ -33,6 +35,7 @@ public class Skill_Base : MonoBehaviour
         if (OnCooldown())
         {
             Debug.Log("On Cooldown");
+            // Debug.Log($"Time.time {Time.time} lastTimeUsed {lastTimeUsed} cooldown {cooldown}");
             return false;
         }
 

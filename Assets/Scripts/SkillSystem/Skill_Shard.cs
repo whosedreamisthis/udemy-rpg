@@ -2,20 +2,51 @@ using UnityEngine;
 
 public class Skill_Shard : Skill_Base
 {
+    private SkillObject_Shard currentShard;
+
     [SerializeField]
     private GameObject shardPrefab;
 
     [SerializeField]
     private float detonationTime = 2;
 
-    public void CreateShard()
+    [Header("Moving Shard Upgrade")]
+    [SerializeField]
+    private float shardSpeed = 7;
+
+    public override void TryUseSkill()
     {
-        if (upgradeType == SkillUpgradeType.None)
-        {
+        if (CanUseSkill() == false)
             return;
+
+        if (UnLocked(SkillUpgradeType.Shard))
+        {
+            HandleShardRegular();
         }
 
+        if (UnLocked(SkillUpgradeType.Shard_MoveToEnemy))
+        {
+            HandleShardMoving();
+        }
+    }
+
+    private void HandleShardRegular()
+    {
+        CreateShard();
+        SetSkillOnCooldown();
+    }
+
+    private void HandleShardMoving()
+    {
+        CreateShard();
+        currentShard.MoveTowardsClosestTarget(shardSpeed);
+        SetSkillOnCooldown();
+    }
+
+    public void CreateShard()
+    {
         GameObject shard = Instantiate(shardPrefab, transform.position, Quaternion.identity);
-        shard.GetComponent<SkillObject_Shard>().SetupShard(detonationTime);
+        currentShard = shard.GetComponent<SkillObject_Shard>();
+        currentShard.SetupShard(detonationTime);
     }
 }

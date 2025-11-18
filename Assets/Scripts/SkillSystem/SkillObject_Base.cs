@@ -16,6 +16,25 @@ public class SkillObject_Base : MonoBehaviour
         return Physics2D.OverlapCircleAll(t.position, radius, whatIsEnemy);
     }
 
+    protected Transform FindClosestTarget()
+    {
+        Transform target = null;
+
+        float closestDistance = Mathf.Infinity;
+
+        foreach (var enemy in EnemiesAround(transform, 10))
+        {
+            float distance = Vector2.Distance(transform.position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                target = enemy.transform;
+            }
+        }
+
+        return target;
+    }
+
     protected void DamageEnemiesInRadius(Transform t, float radius)
     {
         foreach (var target in EnemiesAround(t, radius))
