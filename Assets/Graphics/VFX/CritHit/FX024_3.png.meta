@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 19ac2819e7890954c8b714f28915a180
+guid: 5721a0beb61464e46906cddc82bb0f78
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8897508563416721542
-    second: SP103_03_0
+      213: -7125919759028226895
+    second: FX024_3_0
+  - first:
+      213: -9103172308898111054
+    second: FX024_3_1
+  - first:
+      213: -6028084499043218234
+    second: FX024_3_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +102,56 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SP103_03_0
+      name: FX024_3_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 3
-        width: 27
-        height: 27
+        x: 22
+        y: 28
+        width: 39
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +160,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 688237cb5ec4a7b70800000000000000
-      internalID: 8897508563416721542
+      spriteID: 1b47f21ebb5ab1d90800000000000000
+      internalID: -7125919759028226895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX024_3_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 22
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b1a4f604090ba180800000000000000
+      internalID: -9103172308898111054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX024_3_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 16
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cc8d761611f75ca0800000000000000
+      internalID: -6028084499043218234
       vertices: []
       indices: 
       edges: []
@@ -135,7 +224,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SP103_03_0: 8897508563416721542
+      FX024_3_0: -7125919759028226895
+      FX024_3_1: -9103172308898111054
+      FX024_3_2: -6028084499043218234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,22 +1,28 @@
 fileFormatVersion: 2
-guid: bf08b693aa6fff949bd86dcda745ef8d
+guid: 037034738cf58c34fab0b1d66d55f9a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 292091708780554302
-    second: SP103_02_0
+      213: 6296211511884349944
+    second: explosioneffect_0
   - first:
-      213: -66904145068435480
-    second: SP103_02_1
+      213: -6962958964200265176
+    second: explosioneffect_1
   - first:
-      213: -5352999256995655818
-    second: SP103_02_2
+      213: 3004040480692213713
+    second: explosioneffect_2
   - first:
-      213: -2222656834989453427
-    second: SP103_02_3
+      213: 364043752092803479
+    second: explosioneffect_3
   - first:
-      213: -1783990950886384079
-    second: SP103_02_4
+      213: -1509242787712843393
+    second: explosioneffect_4
+  - first:
+      213: 2455949726256490739
+    second: explosioneffect_5
+  - first:
+      213: 9219587724007029166
+    second: explosioneffect_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -58,12 +64,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,17 +114,56 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SP103_02_0
+      name: explosioneffect_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 18
-        width: 11
-        height: 9
+        x: 47
+        y: 815
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e38a3bf8cd7bd0400800000000000000
-      internalID: 292091708780554302
+      spriteID: 8f18794e203a06750800000000000000
+      internalID: 6296211511884349944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SP103_02_1
+      name: explosioneffect_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 7
-        width: 10
-        height: 13
+        x: 45
+        y: 685
+        width: 38
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8e7d137d80f421ff0800000000000000
-      internalID: -66904145068435480
+      spriteID: 82aa831a6b99e5f90800000000000000
+      internalID: -6962958964200265176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SP103_02_2
+      name: explosioneffect_2
       rect:
         serializedVersion: 2
-        x: 15
-        y: 18
-        width: 10
-        height: 10
+        x: 45
+        y: 557
+        width: 38
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,19 +216,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67f08d3898356b5b0800000000000000
-      internalID: -5352999256995655818
+      spriteID: 1d79d8ea6ee70b920800000000000000
+      internalID: 3004040480692213713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SP103_02_3
+      name: explosioneffect_3
       rect:
         serializedVersion: 2
-        x: 20
-        y: 13
-        width: 10
+        x: 45
+        y: 429
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 791213e1dd75d0500800000000000000
+      internalID: 364043752092803479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosioneffect_4
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 309
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f714e8e4ea71e0be0800000000000000
+      internalID: -1509242787712843393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosioneffect_5
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 299
+        width: 6
         height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -193,20 +282,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8f0cdc72698721e0800000000000000
-      internalID: -2222656834989453427
+      spriteID: 3f86cbb8349451220800000000000000
+      internalID: 2455949726256490739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SP103_02_4
+      name: explosioneffect_6
       rect:
         serializedVersion: 2
-        x: 14
-        y: 3
-        width: 10
-        height: 10
+        x: 47
+        y: 185
+        width: 30
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +304,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 13ed7e1aeadfd37e0800000000000000
-      internalID: -1783990950886384079
+      spriteID: ea9bdf0003e82ff70800000000000000
+      internalID: 9219587724007029166
       vertices: []
       indices: 
       edges: []
@@ -225,7 +314,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +324,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SP103_02_0: 292091708780554302
-      SP103_02_1: -66904145068435480
-      SP103_02_2: -5352999256995655818
-      SP103_02_3: -2222656834989453427
-      SP103_02_4: -1783990950886384079
+      explosioneffect_0: 6296211511884349944
+      explosioneffect_1: -6962958964200265176
+      explosioneffect_2: 3004040480692213713
+      explosioneffect_3: 364043752092803479
+      explosioneffect_4: -1509242787712843393
+      explosioneffect_5: 2455949726256490739
+      explosioneffect_6: 9219587724007029166
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -63234,6 +63234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848418411}
   - component: {fileID: 848418412}
+  - component: {fileID: 848418413}
   m_Layer: 7
   m_Name: Skills_Holder
   m_TagString: Untagged
@@ -63271,6 +63272,23 @@ MonoBehaviour:
   skillType: 0
   upgradeType: 0
   cooldown: 0
+--- !u!114 &848418413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848418410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4af7b297f6d5f42afcc503ccbe821f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Skill_Shard
+  skillType: 0
+  upgradeType: 0
+  cooldown: 1
+  shardPrefab: {fileID: 7704703750873499852, guid: 713f840025bb18945b733c022d21a18c, type: 3}
+  detonationTime: 2
 --- !u!1 &853851107
 GameObject:
   m_ObjectHideFlags: 0

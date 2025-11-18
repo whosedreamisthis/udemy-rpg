@@ -1,10 +1,31 @@
 fileFormatVersion: 2
-guid: cf2459959aeecf64f8bc73a631746d5d
+guid: b547167364b9aa7458617a956bdd01a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4783886219450054430
-    second: SP103_04_0
+      213: 1265166614911258294
+    second: ShardExplosion_0
+  - first:
+      213: 259970588118718324
+    second: ShardExplosion_1
+  - first:
+      213: 6108322926936129131
+    second: ShardExplosion_2
+  - first:
+      213: -6593634857962824033
+    second: ShardExplosion_3
+  - first:
+      213: -4101167924800465396
+    second: ShardExplosion_4
+  - first:
+      213: -5971635895029693947
+    second: ShardExplosion_5
+  - first:
+      213: -8831255584602658587
+    second: ShardExplosion_6
+  - first:
+      213: 2582011558868482410
+    second: ShardExplosion_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -101,7 +122,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,7 +135,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,7 +148,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,13 +160,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SP103_04_0
+      name: ShardExplosion_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 7
-        width: 18
-        height: 21
+        x: 0
+        y: 128
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +175,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e17f434ab27c36240800000000000000
-      internalID: 4783886219450054430
+      spriteID: 6be08774556ce8110800000000000000
+      internalID: 1265166614911258294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShardExplosion_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4779ddc5fd99b9300800000000000000
+      internalID: 259970588118718324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShardExplosion_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6ef669b65f15c450800000000000000
+      internalID: 6108322926936129131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShardExplosion_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e1e700804be74a0800000000000000
+      internalID: -6593634857962824033
       vertices: []
       indices: 
       edges: []
@@ -164,7 +251,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: d8a14e7199ba96b41aad3c0c15a33233
     internalID: 0
     vertices: []
     indices: 
@@ -176,7 +263,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      SP103_04_0: 4783886219450054430
+      ShardExplosion_0: 1265166614911258294
+      ShardExplosion_1: 259970588118718324
+      ShardExplosion_2: 6108322926936129131
+      ShardExplosion_3: -6593634857962824033
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
