@@ -9,16 +9,30 @@ public class UI_SkillToolTip : UI_ToolTip
     private UI ui;
     private UI_SkillTree skillTree;
 
-    [SerializeField] private TextMeshProUGUI skillName;
-    [SerializeField] private TextMeshProUGUI skillDescription;
-    [SerializeField] private TextMeshProUGUI skillRequirements;
+    [SerializeField]
+    private TextMeshProUGUI skillName;
+
+    [SerializeField]
+    private TextMeshProUGUI skillDescription;
+
+    [SerializeField]
+    private TextMeshProUGUI skillRequirements;
 
     [Space]
-    [SerializeField] private string metConditionHex;
-    [SerializeField] private string notMetConditionHex;
-    [SerializeField] private string importantInfoHex;
-    [SerializeField] private Color exampleColor;
-    [SerializeField] private string lockedSkillText = "You've taken a diffrent path - this skill is now locked.";
+    [SerializeField]
+    private string metConditionHex;
+
+    [SerializeField]
+    private string notMetConditionHex;
+
+    [SerializeField]
+    private string importantInfoHex;
+
+    [SerializeField]
+    private Color exampleColor;
+
+    [SerializeField]
+    private string lockedSkillText = "You've taken a diffrent path - this skill is now locked.";
 
     private Coroutine textEffectCo;
 
@@ -45,7 +59,9 @@ public class UI_SkillToolTip : UI_ToolTip
         skillDescription.text = node.skillData.description;
 
         string skillLockedText = GetColoredText(importantInfoHex, lockedSkillText);
-        string requirements = node.isLocked ? skillLockedText : GetRequirements(node.skillData.cost, node.neededNodes, node.conflictNodes);
+        string requirements = node.isLocked
+            ? skillLockedText
+            : GetRequirements(node.skillData.cost, node.neededNodes, node.conflictNodes);
 
         skillRequirements.text = requirements;
     }
@@ -70,13 +86,19 @@ public class UI_SkillToolTip : UI_ToolTip
         }
     }
 
-    private string GetRequirements(int skillCost, UI_TreeNode[] neededNodes, UI_TreeNode[] conflictNodes)
+    private string GetRequirements(
+        int skillCost,
+        UI_TreeNode[] neededNodes,
+        UI_TreeNode[] conflictNodes
+    )
     {
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine("Requirements:");
 
-        string costColor = skillTree.EnoughSkillPoints(skillCost) ? metConditionHex : notMetConditionHex;
+        string costColor = skillTree.EnoughSkillPoints(skillCost)
+            ? metConditionHex
+            : notMetConditionHex;
         string costText = $"- {skillCost} skill point(s)";
         string finalCostText = GetColoredText(costColor, costText);
 
@@ -84,6 +106,8 @@ public class UI_SkillToolTip : UI_ToolTip
 
         foreach (var node in neededNodes)
         {
+            if (node == null)
+                continue;
             string nodeColor = node.isUnlocked ? metConditionHex : notMetConditionHex;
             string nodeText = $"- {node.skillData.displayName}";
             string finalNodeText = GetColoredText(nodeColor, nodeText);
@@ -94,12 +118,13 @@ public class UI_SkillToolTip : UI_ToolTip
         if (conflictNodes.Length <= 0)
             return sb.ToString();
 
-
         sb.AppendLine(); // spacing
-        sb.AppendLine(GetColoredText(importantInfoHex,"Locks out: "));
+        sb.AppendLine(GetColoredText(importantInfoHex, "Locks out: "));
 
         foreach (var node in conflictNodes)
         {
+            if (node == null)
+                continue;
             string nodeText = $"- {node.skillData.displayName}";
             string finalNodeText = GetColoredText(importantInfoHex, nodeText);
             sb.AppendLine(finalNodeText);
@@ -107,5 +132,4 @@ public class UI_SkillToolTip : UI_ToolTip
 
         return sb.ToString();
     }
- 
 }
