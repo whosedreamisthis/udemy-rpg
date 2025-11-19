@@ -155,7 +155,7 @@ public class Skill_Shard : Skill_Base
         float time = GetDetonationTime();
         GameObject shard = Instantiate(shardPrefab, transform.position, Quaternion.identity);
         currentShard = shard.GetComponent<SkillObject_Shard>();
-        currentShard.SetupShard(time);
+        currentShard.SetupShard(this);
 
         if (
             Unlocked(SkillUpgradeType.Shard_Teleport)

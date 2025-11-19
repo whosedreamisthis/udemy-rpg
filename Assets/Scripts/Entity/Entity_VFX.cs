@@ -34,7 +34,7 @@ public class Entity_VFX : MonoBehaviour
     private Color burnVfx = Color.red;
 
     [SerializeField]
-    private Color electrifyVfx = Color.yellow;
+    private Color shockVfx = Color.yellow;
     private Color originalHitVfxColor;
 
     private void Awake()
@@ -54,7 +54,7 @@ public class Entity_VFX : MonoBehaviour
             StartCoroutine(PlayStatusVfxCo(duration, burnVfx));
 
         if (element == ElementType.Lightning)
-            StartCoroutine(PlayStatusVfxCo(duration, electrifyVfx));
+            StartCoroutine(PlayStatusVfxCo(duration, shockVfx));
     }
 
     public void StopAllVfx()

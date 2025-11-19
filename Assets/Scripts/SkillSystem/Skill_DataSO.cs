@@ -24,5 +24,7 @@ public class Skill_DataSO : ScriptableObject
 public class UpgradeData
 {
     public SkillUpgradeType type;
+
     public float cooldown;
+    public DamageScaleData damageScaleData;
 }

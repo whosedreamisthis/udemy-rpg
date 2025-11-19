@@ -1976,6 +1976,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2011d25b7c7461d4584f38680d0bc153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicAttackScale:
+    physical: 1
+    elemental: 1
+    chillDuration: 3
+    chillSlowMultiplier: 0.2
+    burnDuration: 3
+    burnDamageScale: 1
+    shockDuration: 3
+    shockDamageScale: 1
+    shockCharge: 0.4
   targetCheck: {fileID: 1470969856}
   targetCheckRadius: 1
   whatIsTarget:
@@ -1983,7 +1993,7 @@ MonoBehaviour:
     m_Bits: 256
   defaultDuration: 3
   chillSlowMultiplier: 0.2
-  electrifyChargeBuildUp: 0.4
+  shockChargeBuildUp: 0.4
   fireScale: 0.8
   lightningScale: 2.5
   counterRecovery: 0.4
@@ -2030,7 +2040,7 @@ MonoBehaviour:
       baseValue: 0
       modifiers: []
     lightningDamage:
-      baseValue: 50
+      baseValue: 100
       modifiers: []
   defense:
     armor:
@@ -2107,7 +2117,7 @@ MonoBehaviour:
   critHitVfx: {fileID: 1098636999657065682, guid: 003eae1b2e4e74c46910443c3f2c95a9, type: 3}
   chillVfx: {r: 0.42352942, g: 0.69803923, b: 1, a: 1}
   burnVfx: {r: 1, g: 0, b: 0, a: 1}
-  electrifyVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  shockVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   imageEchoInterval: 0.05
   imageEchoPrefab: {fileID: 5917378368344723104, guid: c95400c28549aea4f8e5e49e392f3402, type: 3}
 --- !u!1 &294530348
@@ -65050,10 +65060,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 907547996}
-  - {fileID: 1588501866}
-  - {fileID: 1457542205}
   - {fileID: 1080058312}
   - {fileID: 2084378677}
+  - {fileID: 1588501866}
+  - {fileID: 1457542205}
   m_Father: {fileID: 1881298678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -66774,7 +66784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126.218506, y: -254.71857}
+  m_AnchoredPosition: {x: 126.218506, y: -279.71857}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1143194040
@@ -67395,6 +67405,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4284223986879445403, guid: bf4305a5f17a41745ac68d0ebde48a14, type: 3}
+      propertyPath: offense.damage.baseValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284223986879445403, guid: bf4305a5f17a41745ac68d0ebde48a14, type: 3}
+      propertyPath: resources.maxHealth.baseValue
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 6409625887082432548, guid: bf4305a5f17a41745ac68d0ebde48a14, type: 3}
       propertyPath: m_Name
       value: Enemy_Skeleton
@@ -67777,10 +67795,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1449605374}
-  - {fileID: 1042982851}
+  - {fileID: 1128528426}
   - {fileID: 2120990027}
   - {fileID: 494911917}
-  - {fileID: 1128528426}
+  - {fileID: 1042982851}
   m_Father: {fileID: 1881298678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

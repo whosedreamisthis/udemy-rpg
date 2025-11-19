@@ -3,6 +3,7 @@ using UnityEngine;
 public class Skill_Base : MonoBehaviour
 {
     public Player player { get; private set; }
+    public DamageScaleData damageScaleData { get; private set; }
 
     [Header("General Details")]
     [SerializeField]
@@ -27,6 +28,7 @@ public class Skill_Base : MonoBehaviour
     {
         upgradeType = upgrade.type;
         cooldown = upgrade.cooldown;
+        damageScaleData = upgrade.damageScaleData;
     }
 
     public bool CanUseSkill()
